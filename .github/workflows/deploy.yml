@@ -21,7 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Ensure crypto polyfill
+        run: npm install crypto-browserify --save-dev
+
       - name: Build project
+        env:
+          NODE_OPTIONS: "--openssl-legacy-provider"
         run: npm run build
 
       - name: Deploy to GitHub Pages
