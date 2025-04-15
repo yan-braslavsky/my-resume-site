@@ -15,7 +15,9 @@ import {
   FaBusinessTime,
   FaRocket,
   FaStar,
-  FaChevronRight
+  FaChevronRight,
+  FaArrowUp,
+  FaQuoteRight
 } from 'react-icons/fa';
 import './App.css';
 
@@ -108,14 +110,37 @@ const HOBBIES = [
   { name: 'HIIT', icon: <FaHeartbeat /> }
 ];
 
+// New testimonials data
+const TESTIMONIALS = [
+  {
+    text: "Yan's ability to lead teams through complex technical challenges while maintaining focus on product goals is exceptional. His strategic vision transformed our engineering approach.",
+    author: "Jane Doe",
+    role: "VP of Product, Home24"
+  },
+  {
+    text: "Working with Yan has been transformative for our organization. His technical leadership combined with his people-first approach created a high-performing, motivated team.",
+    author: "John Smith",
+    role: "CTO, Previous Company"
+  }
+];
+
 function App() {
   const [scrolled, setScrolled] = useState(false);
-
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
+      const shouldShowScrollTop = window.scrollY > 500;
+      
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
+      }
+      
+      if (shouldShowScrollTop !== showScrollTop) {
+        setShowScrollTop(shouldShowScrollTop);
       }
     };
 
@@ -123,26 +148,81 @@ function App() {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, [scrolled, showScrollTop]);
+
+  // Handle body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <div className="app-container">
       {/* Header */}
-      <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
+      <header className={`header ${scrolled ? 'header-scrolled' : ''}`} role="banner">
         <div className="header-container">
-          <div className="logo">YB</div>
-          <nav className="nav-links">
-            <a href="#about" className="nav-link">About</a>
-            <a href="#skills" className="nav-link">Skills</a>
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#education" className="nav-link">Education</a>
-            <a href="#contact" className="nav-link">Contact</a>
+          <div className="logo" tabIndex="0">YB</div>
+          <nav 
+            className={`nav-links ${mobileMenuOpen ? 'active' : ''}`} 
+            role="navigation" 
+            aria-label="Main navigation"
+          >
+            <a href="#about" className="nav-link" tabIndex="0" aria-label="About section" onClick={closeMobileMenu}>About</a>
+            <a href="#skills" className="nav-link" tabIndex="0" aria-label="Skills section" onClick={closeMobileMenu}>Skills</a>
+            <a href="#experience" className="nav-link" tabIndex="0" aria-label="Experience section" onClick={closeMobileMenu}>Experience</a>
+            <a href="#education" className="nav-link" tabIndex="0" aria-label="Education section" onClick={closeMobileMenu}>Education</a>
+            <a href="#testimonials" className="nav-link" tabIndex="0" aria-label="Testimonials section" onClick={closeMobileMenu}>Testimonials</a>
+            <a href="#contact" className="nav-link" tabIndex="0" aria-label="Contact section" onClick={closeMobileMenu}>Contact</a>
           </nav>
+          
+          <button 
+            className={`mobile-menu-btn ${mobileMenuOpen ? 'active' : ''}`}
+            aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
+            tabIndex="0"
+            onClick={toggleMobileMenu}
+          >
+            <span className="menu-line"></span>
+            <span className="menu-line"></span>
+            <span className="menu-line"></span>
+          </button>
         </div>
       </header>
 
+      {/* Scroll to top button */}
+      <button 
+        className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+        tabIndex="0"
+      >
+        <FaArrowUp />
+      </button>
+
       {/* Hero Section */}
-      <section className="hero-section" id="about">
+      <section className="hero-section" id="about" aria-label="About me">
         <div className="hero-background"></div>
         <div className="hero-gradient"></div>
         <div className="grid-background"></div>
@@ -356,6 +436,39 @@ function App() {
         </div>
       </section>
 
+      {/* Testimonials Section - New Addition */}
+      <section className="section" id="testimonials">
+        <div className="content-container">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="section-title">Testimonials</h2>
+            <p className="section-subtitle">What colleagues and clients say about working with me.</p>
+            
+            <div className="testimonials-container">
+              {TESTIMONIALS.map((testimonial, idx) => (
+                <motion.div
+                  key={idx}
+                  className="testimonial-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <FaQuoteRight className="testimonial-quote" />
+                  <p className="testimonial-text">"{testimonial.text}"</p>
+                  <div className="testimonial-author">{testimonial.author}</div>
+                  <div className="testimonial-role">{testimonial.role}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Personal Section */}
       <section className="section">
         <div className="content-container">
@@ -432,7 +545,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer" role="contentinfo">
         <div className="content-container">
           <div className="footer-content">
             © {new Date().getFullYear()} Yan Braslavsky. All rights reserved.
