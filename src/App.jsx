@@ -17,12 +17,41 @@ import {
   FaStar,
   FaChevronRight,
   FaArrowUp,
-  FaQuoteRight
+  FaQuoteRight,
+  FaLink,
+  FaServer,
+  FaMobileAlt,
+  FaShoppingCart
 } from 'react-icons/fa';
 import './App.css';
 
 // Resume data
 const resumePDF = '/Yan_Braslavsky_-_Director_of_Engineering.pdf';
+
+// New key projects data
+const KEY_PROJECTS = [
+  {
+    title: "E-commerce Platform Modernization",
+    description: "Led the architectural redesign and implementation of a microservices-based platform that improved site reliability by 45% and reduced deployment time by 70%.",
+    tech: ["Microservices", "Kubernetes", "React", "Node.js", "PostgreSQL"],
+    icon: <FaShoppingCart />,
+    impact: "Supported 200% growth in transaction volume with 30% fewer infrastructure resources."
+  },
+  {
+    title: "Mobile App Development Framework",
+    description: "Created a cross-platform development framework that enabled simultaneous iOS and Android releases, reducing time-to-market by 40% and development costs by 35%.",
+    tech: ["React Native", "TypeScript", "GraphQL", "CI/CD", "Jest"],
+    icon: <FaMobileAlt />,
+    impact: "Adopted by 5 internal product teams resulting in consistent user experience across all mobile products."
+  },
+  {
+    title: "Cloud Infrastructure Migration",
+    description: "Planned and executed migration of legacy systems to cloud infrastructure, designing a scalable and resilient architecture with proper security controls.",
+    tech: ["AWS", "Terraform", "Docker", "Prometheus", "Grafana"],
+    icon: <FaServer />,
+    impact: "Reduced operational costs by 50% while significantly improving system observability and uptime."
+  }
+];
 
 const LANGUAGES = [
   { name: 'English', icon: '🇬🇧', level: 100 },
@@ -192,6 +221,7 @@ function App() {
             <a href="#about" className="nav-link" tabIndex="0" aria-label="About section" onClick={closeMobileMenu}>About</a>
             <a href="#skills" className="nav-link" tabIndex="0" aria-label="Skills section" onClick={closeMobileMenu}>Skills</a>
             <a href="#experience" className="nav-link" tabIndex="0" aria-label="Experience section" onClick={closeMobileMenu}>Experience</a>
+            <a href="#key-projects" className="nav-link" tabIndex="0" aria-label="Key Projects section" onClick={closeMobileMenu}>Projects</a>
             <a href="#education" className="nav-link" tabIndex="0" aria-label="Education section" onClick={closeMobileMenu}>Education</a>
             <a href="#testimonials" className="nav-link" tabIndex="0" aria-label="Testimonials section" onClick={closeMobileMenu}>Testimonials</a>
             <a href="#contact" className="nav-link" tabIndex="0" aria-label="Contact section" onClick={closeMobileMenu}>Contact</a>
@@ -393,6 +423,44 @@ function App() {
                 >
                   <h3 className="education-degree">{edu.degree}</h3>
                   <div className="education-school">{edu.school}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key Projects Section - New Addition */}
+      <section className="section" id="key-projects">
+        <div className="content-container">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="section-title">Key Projects</h2>
+            <p className="section-subtitle">Showcasing impactful projects that demonstrate my technical and leadership skills.</p>
+            
+            <div className="projects-container">
+              {KEY_PROJECTS.map((project, idx) => (
+                <motion.div
+                  key={idx}
+                  className="project-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="project-icon">{project.icon}</div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-tech">
+                    {project.tech.map((tech, idx) => (
+                      <span key={idx} className="tech-item">{tech}</span>
+                    ))}
+                  </div>
+                  <p className="project-impact">{project.impact}</p>
                 </motion.div>
               ))}
             </div>
