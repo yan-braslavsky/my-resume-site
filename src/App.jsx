@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaGithub, 
@@ -23,6 +23,7 @@ import {
   FaMobileAlt,
   FaShoppingCart
 } from 'react-icons/fa';
+import ParticlesBackground from './ParticlesBackground';
 import './App.css';
 
 // Resume data
@@ -153,10 +154,55 @@ const TESTIMONIALS = [
   }
 ];
 
+// Simple fallback particle component using DOM elements instead of canvas
+const SimpleDotBackground = () => {
+  const [dots, setDots] = useState([]);
+  
+  useEffect(() => {
+    // Create 50 dots
+    const newDots = [];
+    for (let i = 0; i < 50; i++) {
+      newDots.push({
+        id: i,
+        left: `${Math.random() * 100}vw`,
+        top: `${Math.random() * 100}vh`,
+        size: Math.random() * 6 + 3,
+        animationDuration: Math.random() * 50 + 30,
+        opacity: Math.random() * 0.5 + 0.3,
+        color: i % 3 === 0 ? '#4f6df5' : (i % 3 === 1 ? '#06b6d4' : '#6c48cb')
+      });
+    }
+    setDots(newDots);
+  }, []);
+  
+  return (
+    <div className="simple-dot-background">
+      {dots.map(dot => (
+        <div
+          key={dot.id}
+          className="floating-dot"
+          style={{
+            left: dot.left,
+            top: dot.top,
+            width: `${dot.size}px`,
+            height: `${dot.size}px`,
+            backgroundColor: dot.color,
+            opacity: dot.opacity,
+            animationDuration: `${dot.animationDuration}s`
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [useCanvasParticles, setUseCanvasParticles] = useState(true);
+  const parallaxLayers = useRef([]);
   
   // Handle scroll effects
   useEffect(() => {
@@ -171,6 +217,9 @@ function App() {
       if (shouldShowScrollTop !== showScrollTop) {
         setShowScrollTop(shouldShowScrollTop);
       }
+
+      // Update scroll position for parallax effect
+      setScrollY(window.scrollY);
     };
 
     document.addEventListener('scroll', handleScroll);
@@ -207,8 +256,48 @@ function App() {
     setMobileMenuOpen(false);
   };
 
+  // Toggle particle system on click - for debugging
+  const toggleParticleSystem = () => {
+    setUseCanvasParticles(!useCanvasParticles);
+    console.log("Toggled particle system:", !useCanvasParticles ? "Canvas" : "DOM");
+  };
+
   return (
     <div className="app-container">
+      {/* Add a way to toggle between particle systems */}
+      <button 
+        onClick={toggleParticleSystem}
+        style={{
+          position: 'fixed',
+          top: '5px',
+          right: '5px',
+          zIndex: 1000,
+          fontSize: '10px',
+          padding: '3px',
+          background: 'rgba(0,0,0,0.5)'
+        }}
+      >
+        {useCanvasParticles ? 'Use DOM' : 'Use Canvas'}
+      </button>
+      
+      {useCanvasParticles ? <ParticlesBackground /> : <SimpleDotBackground />}
+      
+      <div className="parallax-container">
+        {/* Parallax layers */}
+        <div 
+          className="parallax-layer parallax-layer-1" 
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        />
+        <div 
+          className="parallax-layer parallax-layer-2" 
+          style={{ transform: `translateY(${scrollY * 0.15}px)` }}
+        />
+        <div 
+          className="parallax-layer parallax-layer-3" 
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+        />
+      </div>
+
       {/* Header */}
       <header className={`header ${scrolled ? 'header-scrolled' : ''}`} role="banner">
         <div className="header-container">

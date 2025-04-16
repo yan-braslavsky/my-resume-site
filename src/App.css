@@ -1,6 +1,76 @@
 /* TECH ENTREPRENEUR RESUME - PREMIUM DESIGN */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* Simple Dot Background - Fallback */
+.simple-dot-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-20px, 15px) rotate(90deg);
+  }
+  50% {
+    transform: translate(20px, 30px) rotate(180deg);
+  }
+  75% {
+    transform: translate(15px, -20px) rotate(270deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+/* Parallax container and layers */
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+  opacity: 0.4;
+}
+
+.parallax-layer-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(79, 109, 245, 0.1) 0%, transparent 50%);
+}
+
+.parallax-layer-2 {
+  background: radial-gradient(circle at 80% 10%, rgba(6, 182, 212, 0.1) 0%, transparent 60%);
+}
+
+.parallax-layer-3 {
+  background: radial-gradient(circle at 40% 30%, rgba(108, 72, 203, 0.1) 0%, transparent 50%);
+}
+
 :root {
   --bg: #0a0e17;
   --bg-gradient: linear-gradient(145deg, #0a0e17 0%, #131c2e 100%);
@@ -783,7 +853,7 @@ body, html, #root {
 
 .testimonial-role {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var (--text-secondary);
 }
 
 .testimonial-quote {
