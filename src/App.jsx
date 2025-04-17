@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   FaGithub,
   FaLinkedin,
@@ -9,21 +9,20 @@ import {
   FaHeartbeat,
   FaFilePdf,
   FaCode,
-  FaLaptopCode,
   FaRegLightbulb,
   FaUsers,
   FaBusinessTime,
   FaRocket,
-  FaStar,
   FaChevronRight,
   FaArrowUp,
   FaQuoteRight,
-  FaLink,
   FaServer,
   FaMobileAlt,
-  FaShoppingCart
+  FaShoppingCart,
+  FaExchangeAlt
 } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
+import SimpleDotBackground from './components/backgrounds/SimpleDotBackground';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import './App.css';
@@ -156,53 +155,11 @@ const TESTIMONIALS = [
   }
 ];
 
-// Simple fallback particle component using DOM elements instead of canvas
-const SimpleDotBackground = () => {
-  const [dots, setDots] = useState([]);
-
-  useEffect(() => {
-    // Create 50 dots
-    const newDots = [];
-    for (let i = 0; i < 50; i++) {
-      newDots.push({
-        id: i,
-        left: `${Math.random() * 100}vw`,
-        top: `${Math.random() * 100}vh`,
-        size: Math.random() * 6 + 3,
-        animationDuration: Math.random() * 50 + 30,
-        opacity: Math.random() * 0.5 + 0.3,
-        color: i % 3 === 0 ? '#4f6df5' : (i % 3 === 1 ? '#06b6d4' : '#6c48cb')
-      });
-    }
-    setDots(newDots);
-  }, []);
-
-  return (
-    <div className="simple-dot-background">
-      {dots.map(dot => (
-        <div
-          key={dot.id}
-          className="floating-dot"
-          style={{
-            left: dot.left,
-            top: dot.top,
-            width: `${dot.size}px`,
-            height: `${dot.size}px`,
-            backgroundColor: dot.color,
-            opacity: dot.opacity,
-            animationDuration: `${dot.animationDuration}s`
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
 function App() {
-  const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [useCanvasParticles, setUseCanvasParticles] = useState(true);
+  // Change default to false to make SimpleDotBackground the default
+  const [useCanvasParticles, setUseCanvasParticles] = useState(false);
   const parallaxLayers = useRef([]);
 
   // Handle scroll effects
@@ -231,7 +188,7 @@ function App() {
     });
   };
 
-  // Toggle particle system on click - for debugging
+  // Toggle particle system on click
   const toggleParticleSystem = () => {
     setUseCanvasParticles(!useCanvasParticles);
     console.log("Toggled particle system:", !useCanvasParticles ? "Canvas" : "DOM");
@@ -239,21 +196,29 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Add a way to toggle between particle systems */}
+      Improved toggle button with better visibility and icon
       <button
         id="toggle-particles"
         onClick={toggleParticleSystem}
         style={{
           position: 'fixed',
-          top: '5px',
-          right: '5px',
+          top: '15px',
+          right: '15px',
           zIndex: 1000,
-          fontSize: '10px',
-          padding: '3px',
-          background: 'rgba(0,0,0,0.5)'
+          fontSize: '12px',
+          padding: '8px 12px',
+          background: 'rgba(79, 109, 245, 0.8)',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+          boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
         }}
       >
-        {useCanvasParticles ? 'Use DOM' : 'Use Canvas'}
+        <FaExchangeAlt /> {useCanvasParticles ? 'Switch to Simple' : 'Switch to Canvas'}
       </button>
 
       {useCanvasParticles ? <ParticlesBackground /> : <SimpleDotBackground />}
