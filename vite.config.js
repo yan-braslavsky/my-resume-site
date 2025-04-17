@@ -12,7 +12,7 @@ export default defineConfig({
       include: ['buffer', 'process', 'util', 'stream'],
     }),
   ],
-  base: '/my-resume-site/',
+  base: '/',
   resolve: {
     alias: {
       crypto: 'crypto-browserify',
