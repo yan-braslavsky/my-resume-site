@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaGithub, 
-  FaLinkedin, 
-  FaEnvelope, 
-  FaDumbbell, 
-  FaBiking, 
-  FaHeartbeat, 
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaDumbbell,
+  FaBiking,
+  FaHeartbeat,
   FaFilePdf,
   FaCode,
   FaLaptopCode,
@@ -24,6 +24,8 @@ import {
   FaShoppingCart
 } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import './App.css';
 
 // Resume data
@@ -157,7 +159,7 @@ const TESTIMONIALS = [
 // Simple fallback particle component using DOM elements instead of canvas
 const SimpleDotBackground = () => {
   const [dots, setDots] = useState([]);
-  
+
   useEffect(() => {
     // Create 50 dots
     const newDots = [];
@@ -174,7 +176,7 @@ const SimpleDotBackground = () => {
     }
     setDots(newDots);
   }, []);
-  
+
   return (
     <div className="simple-dot-background">
       {dots.map(dot => (
@@ -199,21 +201,15 @@ const SimpleDotBackground = () => {
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [useCanvasParticles, setUseCanvasParticles] = useState(true);
   const parallaxLayers = useRef([]);
-  
+
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
       const shouldShowScrollTop = window.scrollY > 500;
-      
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-      
+
       if (shouldShowScrollTop !== showScrollTop) {
         setShowScrollTop(shouldShowScrollTop);
       }
@@ -226,34 +222,13 @@ function App() {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled, showScrollTop]);
-
-  // Handle body scroll lock when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [mobileMenuOpen]);
+  }, [showScrollTop]);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
-  
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-  
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
   };
 
   // Toggle particle system on click - for debugging
@@ -265,7 +240,8 @@ function App() {
   return (
     <div className="app-container">
       {/* Add a way to toggle between particle systems */}
-      <button 
+      <button
+        id="toggle-particles"
         onClick={toggleParticleSystem}
         style={{
           position: 'fixed',
@@ -279,59 +255,30 @@ function App() {
       >
         {useCanvasParticles ? 'Use DOM' : 'Use Canvas'}
       </button>
-      
+
       {useCanvasParticles ? <ParticlesBackground /> : <SimpleDotBackground />}
-      
+
       <div className="parallax-container">
         {/* Parallax layers */}
-        <div 
-          className="parallax-layer parallax-layer-1" 
+        <div
+          className="parallax-layer parallax-layer-1"
           style={{ transform: `translateY(${scrollY * 0.1}px)` }}
         />
-        <div 
-          className="parallax-layer parallax-layer-2" 
+        <div
+          className="parallax-layer parallax-layer-2"
           style={{ transform: `translateY(${scrollY * 0.15}px)` }}
         />
-        <div 
-          className="parallax-layer parallax-layer-3" 
+        <div
+          className="parallax-layer parallax-layer-3"
           style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         />
       </div>
 
-      {/* Header */}
-      <header className={`header ${scrolled ? 'header-scrolled' : ''}`} role="banner">
-        <div className="header-container">
-          <div className="logo" tabIndex="0">YB</div>
-          <nav 
-            className={`nav-links ${mobileMenuOpen ? 'active' : ''}`} 
-            role="navigation" 
-            aria-label="Main navigation"
-          >
-            <a href="#about" className="nav-link" tabIndex="0" aria-label="About section" onClick={closeMobileMenu}>About</a>
-            <a href="#skills" className="nav-link" tabIndex="0" aria-label="Skills section" onClick={closeMobileMenu}>Skills</a>
-            <a href="#experience" className="nav-link" tabIndex="0" aria-label="Experience section" onClick={closeMobileMenu}>Experience</a>
-            <a href="#key-projects" className="nav-link" tabIndex="0" aria-label="Key Projects section" onClick={closeMobileMenu}>Projects</a>
-            <a href="#education" className="nav-link" tabIndex="0" aria-label="Education section" onClick={closeMobileMenu}>Education</a>
-            <a href="#testimonials" className="nav-link" tabIndex="0" aria-label="Testimonials section" onClick={closeMobileMenu}>Testimonials</a>
-            <a href="#contact" className="nav-link" tabIndex="0" aria-label="Contact section" onClick={closeMobileMenu}>Contact</a>
-          </nav>
-          
-          <button 
-            className={`mobile-menu-btn ${mobileMenuOpen ? 'active' : ''}`}
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileMenuOpen}
-            tabIndex="0"
-            onClick={toggleMobileMenu}
-          >
-            <span className="menu-line"></span>
-            <span className="menu-line"></span>
-            <span className="menu-line"></span>
-          </button>
-        </div>
-      </header>
+      {/* Header - Using the extracted component */}
+      <Header />
 
       {/* Scroll to top button */}
-      <button 
+      <button
         className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
         onClick={scrollToTop}
         aria-label="Scroll to top"
@@ -345,8 +292,8 @@ function App() {
         <div className="hero-background"></div>
         <div className="hero-gradient"></div>
         <div className="grid-background"></div>
-        
-        <motion.div 
+
+        <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -360,7 +307,7 @@ function App() {
             <span>Director of Engineering</span>
           </h1>
           <p className="hero-subtitle">
-            Building high-impact teams and scalable platforms with over 15 years of experience in tech. 
+            Building high-impact teams and scalable platforms with over 15 years of experience in tech.
             Calm in chaos, focused under pressure, and always leading with a human-first approach.
           </p>
           <div className="hero-buttons">
@@ -385,7 +332,7 @@ function App() {
           >
             <h2 className="section-title">Core Expertise</h2>
             <p className="section-subtitle">Leveraging deep technical knowledge with strategic vision to deliver exceptional results.</p>
-            
+
             <div className="skills-container">
               {SKILLS.map((skillGroup, idx) => (
                 <motion.div
@@ -422,10 +369,10 @@ function App() {
           >
             <h2 className="section-title">Professional Journey</h2>
             <p className="section-subtitle">A track record of leadership, innovation and driving successful outcomes.</p>
-            
+
             <div className="experience-container">
               <div className="experience-timeline"></div>
-              
+
               {EXPERIENCE.map((exp, idx) => (
                 <motion.div
                   key={idx}
@@ -458,7 +405,7 @@ function App() {
           >
             <h2 className="section-title">Languages</h2>
             <p className="section-subtitle">Communicating effectively across borders and cultures.</p>
-            
+
             <div className="languages-container">
               {LANGUAGES.map((lang, idx) => (
                 <motion.div
@@ -472,8 +419,8 @@ function App() {
                   <div className="language-icon">{lang.icon}</div>
                   <div className="language-name">{lang.name}</div>
                   <div className="progress-bar">
-                    <motion.div 
-                      className="progress-fill" 
+                    <motion.div
+                      className="progress-fill"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${lang.level}%` }}
                       transition={{ duration: 1, delay: 0.3 }}
@@ -498,7 +445,7 @@ function App() {
           >
             <h2 className="section-title">Education</h2>
             <p className="section-subtitle">Academic foundation supporting practical expertise.</p>
-            
+
             <div className="education-container">
               {EDUCATION.map((edu, idx) => (
                 <motion.div
@@ -530,7 +477,7 @@ function App() {
           >
             <h2 className="section-title">Key Projects</h2>
             <p className="section-subtitle">Showcasing impactful projects that demonstrate my technical and leadership skills.</p>
-            
+
             <div className="projects-container">
               {KEY_PROJECTS.map((project, idx) => (
                 <motion.div
@@ -568,7 +515,7 @@ function App() {
           >
             <h2 className="section-title">Publications</h2>
             <p className="section-subtitle">Sharing insights and expertise with the tech community.</p>
-            
+
             <div className="publications-container">
               <motion.div
                 className="publication-item"
@@ -579,9 +526,9 @@ function App() {
                 whileHover={{ y: -5 }}
               >
                 <h3 className="publication-title">Continuous Delivery of Mobile Applications</h3>
-                <a 
-                  href="https://tech.home24.com/continuous-delivery-of-mobile-applications-at-home24/" 
-                  target="_blank" 
+                <a
+                  href="https://tech.home24.com/continuous-delivery-of-mobile-applications-at-home24/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="publication-link"
                 >
@@ -604,7 +551,7 @@ function App() {
           >
             <h2 className="section-title">Testimonials</h2>
             <p className="section-subtitle">What colleagues and clients say about working with me.</p>
-            
+
             <div className="testimonials-container">
               {TESTIMONIALS.map((testimonial, idx) => (
                 <motion.div
@@ -637,7 +584,7 @@ function App() {
           >
             <h2 className="section-title">Beyond Work</h2>
             <p className="section-subtitle">Finding balance and maintaining peak performance.</p>
-            
+
             <div className="hobbies-container">
               {HOBBIES.map((hobby, idx) => (
                 <motion.div
@@ -669,7 +616,7 @@ function App() {
           >
             <h2 className="section-title">Get In Touch</h2>
             <p className="section-subtitle">Interested in connecting? Reach out through any of these channels.</p>
-            
+
             <div className="social-links">
               <motion.a
                 href="https://github.com/yan-braslavsky"
@@ -701,14 +648,8 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer" role="contentinfo">
-        <div className="content-container">
-          <div className="footer-content">
-            © {new Date().getFullYear()} Yan Braslavsky. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      {/* Footer - Using the extracted component */}
+      <Footer />
     </div>
   );
 }
