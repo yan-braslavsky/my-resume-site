@@ -1,0 +1,41 @@
+.blurred-parallax-background {
+  position: fixed;
+  top: 100;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blurred-bg-image {
+  position: absolute;
+  top: 10000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 90%; 
+  height: 90%;  
+  background-position: center;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Add a subtle overlay to enhance content visibility */
+.blurred-parallax-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 30, 0.85) 50%,
+    rgba(10, 10, 30, 0.6) 100%
+  );
+  z-index: 1;
+}

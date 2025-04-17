@@ -23,6 +23,7 @@ import {
 } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
 import SimpleDotBackground from './components/backgrounds/SimpleDotBackground';
+import BlurredParallaxBackground from './components/backgrounds/BlurredParallaxBackground';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import './App.css';
@@ -188,6 +189,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <BlurredParallaxBackground />
       <SimpleDotBackground />
       <ParticlesBackground />
 
