@@ -158,8 +158,6 @@ const TESTIMONIALS = [
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  // Change default to false to make SimpleDotBackground the default
-  const [useCanvasParticles, setUseCanvasParticles] = useState(false);
   const parallaxLayers = useRef([]);
 
   // Handle scroll effects
@@ -188,40 +186,10 @@ function App() {
     });
   };
 
-  // Toggle particle system on click
-  const toggleParticleSystem = () => {
-    setUseCanvasParticles(!useCanvasParticles);
-    console.log("Toggled particle system:", !useCanvasParticles ? "Canvas" : "DOM");
-  };
-
   return (
     <div className="app-container">
-      Improved toggle button with better visibility and icon
-      <button
-        id="toggle-particles"
-        onClick={toggleParticleSystem}
-        style={{
-          position: 'fixed',
-          top: '15px',
-          right: '15px',
-          zIndex: 1000,
-          fontSize: '12px',
-          padding: '8px 12px',
-          background: 'rgba(79, 109, 245, 0.8)',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '5px',
-          boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
-        }}
-      >
-        <FaExchangeAlt /> {useCanvasParticles ? 'Switch to Simple' : 'Switch to Canvas'}
-      </button>
-
-      {useCanvasParticles ? <ParticlesBackground /> : <SimpleDotBackground />}
+      <SimpleDotBackground />
+      <ParticlesBackground />
 
       <div className="parallax-container">
         {/* Parallax layers */}

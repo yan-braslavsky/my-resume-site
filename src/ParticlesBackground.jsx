@@ -12,8 +12,7 @@ const ParticlesBackground = () => {
     console.log("Initializing particles with canvas:", canvas.width, "x", canvas.height);
     const ctx = canvas.getContext('2d');
     // Dynamic particle count based on screen size but capped for performance
-    const particlesCount = Math.min(canvas.width * canvas.height / 18000, 100); 
-    console.log(`Creating ${particlesCount} particles`);
+    const particlesCount = Math.min(canvas.width * canvas.height / 200000, 100); 
     
     particles.current = [];
     
@@ -28,10 +27,13 @@ const ParticlesBackground = () => {
       particles.current.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 4 + 2, // Even larger particles
+        width: Math.random() * 5 + 3, // Rectangle width
+        height: Math.random() * 5 + 3, // Rectangle height
+        rotation: Math.random() * Math.PI, // Random rotation in radians
         color: colors[Math.floor(Math.random() * colors.length)],
         speedX: Math.random() * 0.5 - 0.25,
         speedY: Math.random() * 0.5 - 0.25,
+        rotationSpeed: (Math.random() * 0.02 - 0.01) * Math.PI / 180, // Rotation speed
         directionChangeTimer: 0,
         directionChangeInterval: Math.random() * 200 + 100,
       });
@@ -47,6 +49,7 @@ const ParticlesBackground = () => {
       // Update particle position with slight randomness for organic movement
       particle.x += particle.speedX + (Math.random() * 0.1 - 0.05);
       particle.y += particle.speedY + (Math.random() * 0.1 - 0.05);
+      particle.rotation += particle.rotationSpeed; // Update rotation
       
       // Change direction occasionally for more natural movement
       particle.directionChangeTimer++;
@@ -77,15 +80,20 @@ const ParticlesBackground = () => {
         }
       }
       
-      // Draw the particle with slight opacity variation based on position
+      // Draw the rectangle with rotation
       const opacity = 0.8 + Math.sin(particle.x * 0.01) * 0.2;
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+      ctx.save(); // Save the current state
+      ctx.translate(particle.x, particle.y); // Move to the particle position
+      ctx.rotate(particle.rotation); // Rotate canvas
       
       // Extract base color and apply dynamic opacity
       const baseColor = particle.color.replace(/[^,]+(?=\))/, opacity);
       ctx.fillStyle = baseColor;
-      ctx.fill();
+      
+      // Draw a rectangle centered at (0, 0) after translation
+      ctx.fillRect(-particle.width / 2, -particle.height / 2, particle.width, particle.height);
+      
+      ctx.restore(); // Restore the canvas state
       
       // Connect nearby particles with gradient lines - increased visibility
       for (let j = index + 1; j < particles.current.length; j++) {
