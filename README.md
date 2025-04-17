@@ -13,4 +13,4 @@ If you are developing a production application, we recommend using TypeScript an
 
 ## Deployed Version
 
-You can view the deployed version of this project on GitHub Pages: [my-resume-site](https://yan-braslavsky.github.io/my-resume-site/)
+You can view the deployed version of this project on GitHub Pages: [Resume Webpage](http:www.yanbraslavsky.com)
