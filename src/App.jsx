@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import * as FaIcons from 'react-icons/fa';
 import {
@@ -6,7 +6,6 @@ import {
   FaLinkedin,
   FaEnvelope,
   FaChevronRight,
-  FaArrowUp,
   FaQuoteRight
 } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
@@ -15,11 +14,13 @@ import BlurredParallaxBackground from './components/backgrounds/BlurredParallaxB
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
+import Skills from './components/sections/Skills';
+import Section from './components/ui/Section';
+import ScrollToTopButton from './components/ui/ScrollToTopButton';
 import { 
   resumePDF, 
   KEY_PROJECTS, 
   LANGUAGES, 
-  SKILLS, 
   EXPERIENCE, 
   EDUCATION, 
   HOBBIES, 
@@ -57,363 +58,247 @@ function App() {
     };
   }, [showScrollTop]);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
   return (
     <div className="app-container">
       <BlurredParallaxBackground />
       <SimpleDotBackground />
       <ParticlesBackground />
 
-      {/* Header - Using the extracted component */}
+      {/* Header */}
       <Header />
 
-      {/* Scroll to top button */}
-      <button
-        className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-        tabIndex="0"
-      >
-        <FaArrowUp />
-      </button>
+      {/* Scroll to top button - Now using the extracted component */}
+      <ScrollToTopButton visible={showScrollTop} />
 
-      {/* Hero Section - Now using the Hero component */}
+      {/* Hero Section */}
       <Hero resumePDF={resumePDF} scrollY={scrollY} />
 
       {/* Skills Section */}
-      <section className="section" id="skills">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Core Expertise</h2>
-            <p className="section-subtitle">Leveraging deep technical knowledge with strategic vision to deliver exceptional results.</p>
-
-            <div className="skills-container">
-              {SKILLS.map((skillGroup, idx) => (
-                <motion.div
-                  key={skillGroup.category}
-                  className="skill-card"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10 }}
-                >
-                  <div className="skill-icon">{getIconComponent(skillGroup.iconName)}</div>
-                  <h3 className="skill-title">{skillGroup.category}</h3>
-                  <ul className="skill-list">
-                    {skillGroup.skills.map((skill, idx) => (
-                      <li key={idx}>{skill}</li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <Skills />
 
       {/* Experience Section */}
-      <section className="section" id="experience">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Professional Journey</h2>
-            <p className="section-subtitle">A track record of leadership, innovation and driving successful outcomes.</p>
+      <Section 
+        id="experience"
+        title="Professional Journey"
+        subtitle="A track record of leadership, innovation and driving successful outcomes."
+      >
+        <div className="experience-container">
+          <div className="experience-timeline"></div>
 
-            <div className="experience-container">
-              <div className="experience-timeline"></div>
-
-              {EXPERIENCE.map((exp, idx) => (
-                <motion.div
-                  key={idx}
-                  className="experience-item"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="experience-dot"></div>
-                  <h3 className="experience-company">{exp.company}</h3>
-                  <div className="experience-position">{exp.position}</div>
-                  <div className="experience-date">{exp.date}</div>
-                  <p className="experience-description">{exp.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          {EXPERIENCE.map((exp, idx) => (
+            <motion.div
+              key={idx}
+              className="experience-item"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="experience-dot"></div>
+              <h3 className="experience-company">{exp.company}</h3>
+              <div className="experience-position">{exp.position}</div>
+              <div className="experience-date">{exp.date}</div>
+              <p className="experience-description">{exp.description}</p>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Languages Section */}
-      <section className="section">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Languages</h2>
-            <p className="section-subtitle">Communicating effectively across borders and cultures.</p>
-
-            <div className="languages-container">
-              {LANGUAGES.map((lang, idx) => (
+      <Section 
+        title="Languages"
+        subtitle="Communicating effectively across borders and cultures."
+      >
+        <div className="languages-container">
+          {LANGUAGES.map((lang, idx) => (
+            <motion.div
+              key={lang.name}
+              className="language-item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="language-icon">{lang.icon}</div>
+              <div className="language-name">{lang.name}</div>
+              <div className="progress-bar">
                 <motion.div
-                  key={lang.name}
-                  className="language-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="progress-fill"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${lang.level}%` }}
+                  transition={{ duration: 1, delay: 0.3 }}
                   viewport={{ once: true }}
-                >
-                  <div className="language-icon">{lang.icon}</div>
-                  <div className="language-name">{lang.name}</div>
-                  <div className="progress-bar">
-                    <motion.div
-                      className="progress-fill"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${lang.level}%` }}
-                      transition={{ duration: 1, delay: 0.3 }}
-                      viewport={{ once: true }}
-                    ></motion.div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                ></motion.div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Education Section */}
-      <section className="section" id="education">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Education</h2>
-            <p className="section-subtitle">Academic foundation supporting practical expertise.</p>
-
-            <div className="education-container">
-              {EDUCATION.map((edu, idx) => (
-                <motion.div
-                  key={idx}
-                  className="education-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                >
-                  <h3 className="education-degree">{edu.degree}</h3>
-                  <div className="education-school">{edu.school}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+      <Section 
+        id="education"
+        title="Education"
+        subtitle="Academic foundation supporting practical expertise."
+      >
+        <div className="education-container">
+          {EDUCATION.map((edu, idx) => (
+            <motion.div
+              key={idx}
+              className="education-item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+            >
+              <h3 className="education-degree">{edu.degree}</h3>
+              <div className="education-school">{edu.school}</div>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Key Projects Section - New Addition */}
-      <section className="section" id="key-projects">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Key Projects</h2>
-            <p className="section-subtitle">Showcasing impactful projects that demonstrate my technical and leadership skills.</p>
-
-            <div className="projects-container">
-              {KEY_PROJECTS.map((project, idx) => (
-                <motion.div
-                  key={idx}
-                  className="project-card"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="project-icon">{getIconComponent(project.iconName)}</div>
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-tech">
-                    {project.tech.map((tech, idx) => (
-                      <span key={idx} className="tech-item">{tech}</span>
-                    ))}
-                  </div>
-                  <p className="project-impact">{project.impact}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+      {/* Key Projects Section */}
+      <Section 
+        id="key-projects"
+        title="Key Projects"
+        subtitle="Showcasing impactful projects that demonstrate my technical and leadership skills."
+      >
+        <div className="projects-container">
+          {KEY_PROJECTS.map((project, idx) => (
+            <motion.div
+              key={idx}
+              className="project-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-icon">{getIconComponent(project.iconName)}</div>
+              <h3 className="project-title">{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+              <div className="project-tech">
+                {project.tech.map((tech, idx) => (
+                  <span key={idx} className="tech-item">{tech}</span>
+                ))}
+              </div>
+              <p className="project-impact">{project.impact}</p>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Publications Section */}
-      <section className="section">
-        <div className="content-container">
+      <Section 
+        title="Publications"
+        subtitle="Sharing insights and expertise with the tech community."
+      >
+        <div className="publications-container">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+            className="publication-item"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            whileHover={{ y: -5 }}
           >
-            <h2 className="section-title">Publications</h2>
-            <p className="section-subtitle">Sharing insights and expertise with the tech community.</p>
-
-            <div className="publications-container">
-              <motion.div
-                className="publication-item"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <h3 className="publication-title">Continuous Delivery of Mobile Applications</h3>
-                <a
-                  href="https://tech.home24.com/continuous-delivery-of-mobile-applications-at-home24/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="publication-link"
-                >
-                  Read article <FaChevronRight />
-                </a>
-              </motion.div>
-            </div>
+            <h3 className="publication-title">Continuous Delivery of Mobile Applications</h3>
+            <a
+              href="https://tech.home24.com/continuous-delivery-of-mobile-applications-at-home24/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="publication-link"
+            >
+              Read article <FaChevronRight />
+            </a>
           </motion.div>
         </div>
-      </section>
+      </Section>
 
-      {/* Testimonials Section - New Addition */}
-      <section className="section" id="testimonials">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Testimonials</h2>
-            <p className="section-subtitle">What colleagues and clients say about working with me.</p>
-
-            <div className="testimonials-container">
-              {TESTIMONIALS.map((testimonial, idx) => (
-                <motion.div
-                  key={idx}
-                  className="testimonial-card"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <FaQuoteRight className="testimonial-quote" />
-                  <p className="testimonial-text">"{testimonial.text}"</p>
-                  <div className="testimonial-author">{testimonial.author}</div>
-                  <div className="testimonial-role">{testimonial.role}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+      {/* Testimonials Section */}
+      <Section 
+        id="testimonials"
+        title="Testimonials"
+        subtitle="What colleagues and clients say about working with me."
+      >
+        <div className="testimonials-container">
+          {TESTIMONIALS.map((testimonial, idx) => (
+            <motion.div
+              key={idx}
+              className="testimonial-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <FaQuoteRight className="testimonial-quote" />
+              <p className="testimonial-text">"{testimonial.text}"</p>
+              <div className="testimonial-author">{testimonial.author}</div>
+              <div className="testimonial-role">{testimonial.role}</div>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Personal Section */}
-      <section className="section">
-        <div className="content-container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">Beyond Work</h2>
-            <p className="section-subtitle">Finding balance and maintaining peak performance.</p>
-
-            <div className="hobbies-container">
-              {HOBBIES.map((hobby, idx) => (
-                <motion.div
-                  key={hobby.name}
-                  className="hobby-item"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                >
-                  {getIconComponent(hobby.iconName)} {hobby.name}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+      <Section 
+        title="Beyond Work"
+        subtitle="Finding balance and maintaining peak performance."
+      >
+        <div className="hobbies-container">
+          {HOBBIES.map((hobby, idx) => (
+            <motion.div
+              key={hobby.name}
+              className="hobby-item"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+            >
+              {getIconComponent(hobby.iconName)} {hobby.name}
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Contact Section */}
-      <section className="section" id="contact">
-        <div className="content-container">
-          <motion.div
-            className="contact-container"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+      <Section 
+        id="contact"
+        title="Get In Touch"
+        subtitle="Interested in connecting? Reach out through any of these channels."
+      >
+        <div className="social-links">
+          <motion.a
+            href="https://github.com/yan-braslavsky"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+            whileHover={{ y: -5 }}
           >
-            <h2 className="section-title">Get In Touch</h2>
-            <p className="section-subtitle">Interested in connecting? Reach out through any of these channels.</p>
-
-            <div className="social-links">
-              <motion.a
-                href="https://github.com/yan-braslavsky"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                whileHover={{ y: -5 }}
-              >
-                <FaGithub />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/yanbraslavsky"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                whileHover={{ y: -5 }}
-              >
-                <FaLinkedin />
-              </motion.a>
-              <motion.a
-                href="mailto:yan.braslavsky@gmail.com"
-                className="social-link"
-                whileHover={{ y: -5 }}
-              >
-                <FaEnvelope />
-              </motion.a>
-            </div>
-          </motion.div>
+            <FaGithub />
+          </motion.a>
+          <motion.a
+            href="https://linkedin.com/in/yanbraslavsky"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+            whileHover={{ y: -5 }}
+          >
+            <FaLinkedin />
+          </motion.a>
+          <motion.a
+            href="mailto:yan.braslavsky@gmail.com"
+            className="social-link"
+            whileHover={{ y: -5 }}
+          >
+            <FaEnvelope />
+          </motion.a>
         </div>
-      </section>
+      </Section>
 
-      {/* Footer - Using the extracted component */}
+      {/* Footer */}
       <Footer />
     </div>
   );
