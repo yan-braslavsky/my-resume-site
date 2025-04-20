@@ -9,7 +9,6 @@ const ParticlesBackground = () => {
 
   // Initialize particles with improved colors that match the site theme
   const initializeParticles = (canvas) => {
-    console.log("Initializing particles with canvas:", canvas.width, "x", canvas.height);
     const ctx = canvas.getContext('2d');
     // Dynamic particle count based on screen size but capped for performance
     const particlesCount = Math.min(canvas.width * canvas.height / 200000, 100); 
@@ -132,13 +131,11 @@ const ParticlesBackground = () => {
       return;
     }
     
-    console.log("ParticlesBackground mounted, setting up canvas");
     
     // Make canvas responsive to window size changes
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      console.log("Canvas resized to:", canvas.width, "x", canvas.height);
       initializeParticles(canvas);
     };
     
@@ -170,7 +167,6 @@ const ParticlesBackground = () => {
       const ctx = canvas.getContext('2d');
       ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
       ctx.fillRect(0, 0, 100, 100);
-      console.log("Drew red rectangle for debugging");
     }, 1000);
     
     return () => {
@@ -182,7 +178,6 @@ const ParticlesBackground = () => {
     };
   }, []);
 
-  console.log("Rendering ParticlesBackground component");
   
   // Use inline styles to ensure the canvas is visible
   const canvasStyle = {

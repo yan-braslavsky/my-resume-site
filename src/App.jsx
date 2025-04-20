@@ -1,165 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import * as FaIcons from 'react-icons/fa';
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaDumbbell,
-  FaBiking,
-  FaHeartbeat,
   FaFilePdf,
-  FaCode,
-  FaRegLightbulb,
-  FaUsers,
-  FaBusinessTime,
-  FaRocket,
   FaChevronRight,
   FaArrowUp,
-  FaQuoteRight,
-  FaServer,
-  FaMobileAlt,
-  FaShoppingCart,
-  FaExchangeAlt
+  FaQuoteRight
 } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
 import SimpleDotBackground from './components/backgrounds/SimpleDotBackground';
 import BlurredParallaxBackground from './components/backgrounds/BlurredParallaxBackground';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import { 
+  resumePDF, 
+  KEY_PROJECTS, 
+  LANGUAGES, 
+  SKILLS, 
+  EXPERIENCE, 
+  EDUCATION, 
+  HOBBIES, 
+  TESTIMONIALS 
+} from './data/data';
 import './App.css';
 
-// Resume data
-const resumePDF = '/Yan_Braslavsky_-_Director_of_Engineering.pdf';
-
-// New key projects data
-const KEY_PROJECTS = [
-  {
-    title: "E-commerce Platform Modernization",
-    description: "Led the architectural redesign and implementation of a microservices-based platform that improved site reliability by 45% and reduced deployment time by 70%.",
-    tech: ["Microservices", "Kubernetes", "React", "Node.js", "PostgreSQL"],
-    icon: <FaShoppingCart />,
-    impact: "Supported 200% growth in transaction volume with 30% fewer infrastructure resources."
-  },
-  {
-    title: "Mobile App Development Framework",
-    description: "Created a cross-platform development framework that enabled simultaneous iOS and Android releases, reducing time-to-market by 40% and development costs by 35%.",
-    tech: ["React Native", "TypeScript", "GraphQL", "CI/CD", "Jest"],
-    icon: <FaMobileAlt />,
-    impact: "Adopted by 5 internal product teams resulting in consistent user experience across all mobile products."
-  },
-  {
-    title: "Cloud Infrastructure Migration",
-    description: "Planned and executed migration of legacy systems to cloud infrastructure, designing a scalable and resilient architecture with proper security controls.",
-    tech: ["AWS", "Terraform", "Docker", "Prometheus", "Grafana"],
-    icon: <FaServer />,
-    impact: "Reduced operational costs by 50% while significantly improving system observability and uptime."
-  }
-];
-
-const LANGUAGES = [
-  { name: 'English', icon: '🇬🇧', level: 100 },
-  { name: 'German', icon: '🇩🇪', level: 70 },
-  { name: 'Hebrew', icon: '🇮🇱', level: 90 },
-  { name: 'Russian', icon: '🇷🇺', level: 80 },
-];
-
-const SKILLS = [
-  {
-    category: "Leadership & Management",
-    icon: <FaUsers />,
-    skills: [
-      "Team Leadership & Growth",
-      "Tech Strategy & Vision",
-      "Budget Management",
-      "OKRs & Roadmap Planning",
-      "Cross-functional Collaboration"
-    ]
-  },
-  {
-    category: "Software Engineering",
-    icon: <FaCode />,
-    skills: [
-      "Microservice Architecture",
-      "Cloud Infrastructure (AWS/GCP)",
-      "Mobile Development",
-      "Front-end Technologies",
-      "CI/CD & DevOps"
-    ]
-  },
-  {
-    category: "Product Development",
-    icon: <FaRegLightbulb />,
-    skills: [
-      "Agile Methodologies",
-      "Product Strategy",
-      "UX/UI Best Practices",
-      "Performance Optimization",
-      "Technical Debt Management"
-    ]
-  },
-  {
-    category: "Business Acumen",
-    icon: <FaBusinessTime />,
-    skills: [
-      "E-Commerce Expertise",
-      "Stakeholder Management",
-      "Cost-benefit Analysis",
-      "Resource Allocation",
-      "Process Optimization"
-    ]
-  }
-];
-
-const EXPERIENCE = [
-  {
-    company: "Home24",
-    position: "Director of Engineering",
-    date: "2017 - Present",
-    description: "Leading engineering teams across multiple product lines, managing budget and resources, implementing technical strategy, and working with key stakeholders to deliver scalable e-commerce solutions."
-  },
-  {
-    company: "Previous Role",
-    position: "Senior Engineering Manager",
-    date: "2014 - 2017",
-    description: "Led the development of multiple mobile applications, implemented CI/CD pipelines, and improved development process efficiency resulting in 40% faster time-to-market."
-  },
-  {
-    company: "Early Career",
-    position: "Software Engineer",
-    date: "2010 - 2014",
-    description: "Developed full-stack solutions for enterprise clients, focusing on web applications and early mobile development projects."
-  }
-];
-
-const EDUCATION = [
-  { degree: 'B.Sc. Software Engineering', school: 'Afeka College of Engineering, Tel Aviv, Israel' },
-  { degree: 'Applied Electronics Engineering', school: 'Midrashat Hagalil, Migdal Haemek, Israel' }
-];
-
-const HOBBIES = [
-  { name: 'Calisthenics', icon: <FaDumbbell /> },
-  { name: 'Cycling', icon: <FaBiking /> },
-  { name: 'HIIT', icon: <FaHeartbeat /> }
-];
-
-// New testimonials data
-const TESTIMONIALS = [
-  {
-    text: "Yan's ability to lead teams through complex technical challenges while maintaining focus on product goals is exceptional. His strategic vision transformed our engineering approach.",
-    author: "Jane Doe",
-    role: "VP of Product, Home24"
-  },
-  {
-    text: "Working with Yan has been transformative for our organization. His technical leadership combined with his people-first approach created a high-performing, motivated team.",
-    author: "John Smith",
-    role: "CTO, Previous Company"
-  }
-];
+// Helper function to resolve icon name strings to corresponding React components
+const getIconComponent = (iconName) => {
+  if (!iconName) return null;
+  const IconComponent = FaIcons[iconName];
+  return IconComponent ? <IconComponent /> : null;
+};
 
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const parallaxLayers = useRef([]);
 
   // Handle scroll effects
   useEffect(() => {
@@ -234,12 +111,9 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="hero-badge">
-            <FaRocket /> Tech Leader
-          </div>
           <h1 className="hero-title">
             Yan Braslavsky<br />
-            <span>Director of Engineering</span>
+            <span>Engineering Leadership</span>
           </h1>
           <p className="hero-subtitle">
             Building high-impact teams and scalable platforms with over 15 years of experience in tech.
@@ -279,7 +153,7 @@ function App() {
                   viewport={{ once: true }}
                   whileHover={{ y: -10 }}
                 >
-                  <div className="skill-icon">{skillGroup.icon}</div>
+                  <div className="skill-icon">{getIconComponent(skillGroup.iconName)}</div>
                   <h3 className="skill-title">{skillGroup.category}</h3>
                   <ul className="skill-list">
                     {skillGroup.skills.map((skill, idx) => (
@@ -423,7 +297,7 @@ function App() {
                   transition={{ duration: 0.5, delay: idx * 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <div className="project-icon">{project.icon}</div>
+                  <div className="project-icon">{getIconComponent(project.iconName)}</div>
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
                   <div className="project-tech">
@@ -531,7 +405,7 @@ function App() {
                   viewport={{ once: true }}
                   whileHover={{ y: -5 }}
                 >
-                  {hobby.icon} {hobby.name}
+                  {getIconComponent(hobby.iconName)} {hobby.name}
                 </motion.div>
               ))}
             </div>
