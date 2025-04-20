@@ -18,18 +18,10 @@ import { resumePDF } from './data/data';
 import './App.css';
 
 function App() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
-  // Handle scroll effects
+  // Handle scroll effects for parallax only
   useEffect(() => {
     const handleScroll = () => {
-      const shouldShowScrollTop = window.scrollY > 500;
-
-      if (shouldShowScrollTop !== showScrollTop) {
-        setShowScrollTop(shouldShowScrollTop);
-      }
-
       // Update scroll position for parallax effect
       setScrollY(window.scrollY);
     };
@@ -38,14 +30,10 @@ function App() {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [showScrollTop]);
-
-
+  }, []);
 
   return (
     <div className="app-container">
-
-      {/* Backgrounds */}
       <BlurredParallaxBackground />
       <SimpleDotBackground />
       <ParticlesBackground />
@@ -54,7 +42,7 @@ function App() {
       <Header />
 
       {/* Scroll to top button */}
-      <ScrollToTopButton visible={showScrollTop} />
+      <ScrollToTopButton />
 
       {/* Hero Section */}
       <Hero resumePDF={resumePDF}/>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 import './ScrollToTopButton.css';
@@ -6,8 +6,27 @@ import './ScrollToTopButton.css';
 /**
  * A reusable scroll to top button component that appears when the user
  * scrolls down the page and allows them to smoothly scroll back to the top.
+ * Self-manages its visibility based on scroll position.
  */
-const ScrollToTopButton = ({ visible }) => {
+const ScrollToTopButton = ({ threshold = 500 }) => {
+  const [visible, setVisible] = useState(false);
+
+  // Handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldShow = window.scrollY > threshold;
+      
+      if (shouldShow !== visible) {
+        setVisible(shouldShow);
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [visible, threshold]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
