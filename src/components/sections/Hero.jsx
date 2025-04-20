@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaFilePdf, FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
-const Hero = ({ resumePDF, scrollY }) => {
+const Hero = ({ resumePDF }) => {
   return (
     <section className="hero-section" id="about" aria-label="About me">
       <div className="hero-background"></div>

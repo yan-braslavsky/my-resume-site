@@ -57,7 +57,7 @@ function App() {
       <ScrollToTopButton visible={showScrollTop} />
 
       {/* Hero Section */}
-      <Hero resumePDF={resumePDF} scrollY={scrollY} />
+      <Hero resumePDF={resumePDF}/>
 
       {/* Skills Section */}
       <Skills />
