@@ -5,7 +5,6 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaFilePdf,
   FaChevronRight,
   FaArrowUp,
   FaQuoteRight
@@ -15,6 +14,7 @@ import SimpleDotBackground from './components/backgrounds/SimpleDotBackground';
 import BlurredParallaxBackground from './components/backgrounds/BlurredParallaxBackground';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import Hero from './components/sections/Hero';
 import { 
   resumePDF, 
   KEY_PROJECTS, 
@@ -70,22 +70,6 @@ function App() {
       <SimpleDotBackground />
       <ParticlesBackground />
 
-      <div className="parallax-container">
-        {/* Parallax layers */}
-        <div
-          className="parallax-layer parallax-layer-1"
-          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
-        />
-        <div
-          className="parallax-layer parallax-layer-2"
-          style={{ transform: `translateY(${scrollY * 0.15}px)` }}
-        />
-        <div
-          className="parallax-layer parallax-layer-3"
-          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-        />
-      </div>
-
       {/* Header - Using the extracted component */}
       <Header />
 
@@ -99,36 +83,8 @@ function App() {
         <FaArrowUp />
       </button>
 
-      {/* Hero Section */}
-      <section className="hero-section" id="about" aria-label="About me">
-        <div className="hero-background"></div>
-        <div className="hero-gradient"></div>
-        <div className="grid-background"></div>
-
-        <motion.div
-          className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="hero-title">
-            Yan Braslavsky<br />
-            <span>Engineering Leadership</span>
-          </h1>
-          <p className="hero-subtitle">
-            Building high-impact teams and scalable platforms with over 15 years of experience in tech.
-            Calm in chaos, focused under pressure, and always leading with a human-first approach.
-          </p>
-          <div className="hero-buttons">
-            <a href={resumePDF} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              <FaFilePdf /> Download Resume
-            </a>
-            <a href="#contact" className="btn btn-secondary">
-              <FaEnvelope /> Get in Touch
-            </a>
-          </div>
-        </motion.div>
-      </section>
+      {/* Hero Section - Now using the Hero component */}
+      <Hero resumePDF={resumePDF} scrollY={scrollY} />
 
       {/* Skills Section */}
       <section className="section" id="skills">
