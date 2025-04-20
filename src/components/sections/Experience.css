@@ -1,0 +1,68 @@
+/* Experience section styles */
+.experience-container {
+  position: relative;
+  padding-left: 30px;
+}
+
+.experience-timeline {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+}
+
+.experience-dot {
+  position: absolute;
+  left: -34px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+.experience-company {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-color-light);
+}
+
+.experience-position {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--accent-color);
+}
+
+.experience-date {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  color: var(--text-color-muted);
+}
+
+.experience-description {
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .experience-container {
+    padding-left: 20px;
+  }
+  
+  .experience-item {
+    margin-bottom: 40px;
+  }
+  
+  .experience-dot {
+    left: -24px;
+  }
+}
