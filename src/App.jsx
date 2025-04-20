@@ -21,6 +21,7 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Background */}
       <BlurredParallaxBackground />
       <SimpleDotBackground />
       <ParticlesBackground />
