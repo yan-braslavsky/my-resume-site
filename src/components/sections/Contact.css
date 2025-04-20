@@ -1,0 +1,29 @@
+/* Contact section styles */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.social-link {
+  font-size: 2rem;
+  color: var(--text-color-light);
+  background: rgba(255, 255, 255, 0.05);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
