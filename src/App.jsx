@@ -19,19 +19,6 @@ import './App.css';
 
 function App() {
 
-  // Handle scroll effects for parallax only
-  useEffect(() => {
-    const handleScroll = () => {
-      // Update scroll position for parallax effect
-      setScrollY(window.scrollY);
-    };
-
-    document.addEventListener('scroll', handleScroll);
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <div className="app-container">
       <BlurredParallaxBackground />
