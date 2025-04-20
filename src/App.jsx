@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import ParticlesBackground from './ParticlesBackground';
 import SimpleDotBackground from './components/backgrounds/SimpleDotBackground';
 import BlurredParallaxBackground from './components/backgrounds/BlurredParallaxBackground';
@@ -17,6 +18,30 @@ import { resumePDF } from './data/data';
 import './App.css';
 
 function App() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  // Handle scroll effects
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldShowScrollTop = window.scrollY > 500;
+
+      if (shouldShowScrollTop !== showScrollTop) {
+        setShowScrollTop(shouldShowScrollTop);
+      }
+
+      // Update scroll position for parallax effect
+      setScrollY(window.scrollY);
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [showScrollTop]);
+
+
+
   return (
     <div className="app-container">
 
