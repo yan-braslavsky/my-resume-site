@@ -97,8 +97,10 @@ const Header = () => {
       role="banner" // Accessibility: Identifies the element as a banner landmark
     >
       <div className="header-container">
-        {/* Site logo - could be replaced with an image */}
-        <div className="logo" tabIndex="0">YB</div>
+        {/* Site logo - clicking it navigates to the root page and refreshes */}
+        <a href="/" className="logo-link">
+          <div className="logo" tabIndex="0">YB</div>
+        </a>
         
         {/* Main navigation */}
         <nav
