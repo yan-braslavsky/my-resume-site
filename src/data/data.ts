@@ -60,46 +60,68 @@ export interface Skill {
 export const SKILLS: Skill[] = [
   {
     category: "Leadership & Management",
-    iconName: "FaUsers", // Icon name as string
+    iconName: "FaUserTie", // Professional leadership icon
     skills: [
       "Team Leadership & Growth",
       "Tech Strategy & Vision",
-      "Budget Management",
-      "OKRs & Roadmap Planning",
-      "Cross-functional Collaboration"
+      "Cross-functional Collaboration",
+      "Mentorship & Coaching",
+      "Hiring & Team Structuring"
     ]
   },
   {
     category: "Software Engineering",
-    iconName: "FaCode", // Icon name as string
+    iconName: "FaLaptopCode", // Modern code/development icon
     skills: [
       "Microservice Architecture",
+      "Mobile & Web Development",
       "Cloud Infrastructure (AWS/GCP)",
-      "Mobile Development",
-      "Front-end Technologies",
+      "Front-end Frameworks (React/Next.js)",
       "CI/CD & DevOps"
     ]
   },
   {
-    category: "Product Development",
-    iconName: "FaRegLightbulb", // Icon name as string
+    category: "Product & UX",
+    iconName: "FaPencilRuler", // Design and product icon
     skills: [
-      "Agile Methodologies",
-      "Product Strategy",
-      "UX/UI Best Practices",
-      "Performance Optimization",
-      "Technical Debt Management"
+      "Agile Product Development",
+      "Product Strategy & Roadmaps",
+      "UX/UI Design Principles",
+      "A/B Testing & User Feedback Loops",
+      "Accessibility Best Practices"
     ]
   },
   {
-    category: "Business Acumen",
-    iconName: "FaBusinessTime", // Icon name as string
+    category: "Business & Operations",
+    iconName: "FaChartLine", // Business growth icon
     skills: [
       "E-Commerce Expertise",
-      "Stakeholder Management",
-      "Cost-benefit Analysis",
-      "Resource Allocation",
+      "Stakeholder Communication",
+      "Resource Allocation & Cost Management",
+      "Budgeting & Forecasting",
       "Process Optimization"
+    ]
+  },
+  {
+    category: "AI & Data",
+    iconName: "FaBrain", // AI/Machine learning icon
+    skills: [
+      "Machine Learning Basics",
+      "Data-driven Decision Making",
+      "AIOps & Observability",
+      "Monitoring & Alerting Systems",
+      "Experimentation at Scale"
+    ]
+  },
+  {
+    category: "Innovation & Growth",
+    iconName: "FaRocket", // Growth/innovation icon
+    skills: [
+      "Scaling Startups",
+      "Strategic Partnerships",
+      "GTM (Go-to-Market) Planning",
+      "Innovation Culture & Enablement",
+      "Personal Branding & Thought Leadership"
     ]
   }
 ];
