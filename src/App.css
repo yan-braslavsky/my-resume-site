@@ -80,6 +80,15 @@ body, html, #root {
   overflow-x: hidden;
 }
 
+/* Ensure the main content takes up available space to push footer to bottom */
+.app-container > *:not(.footer) {
+  flex: 0 0 auto;
+}
+
+.app-container > .footer {
+  margin-top: auto;
+}
+
 /* Section divider - new */
 .section {
   position: relative;
@@ -621,7 +630,12 @@ body, html, #root {
 
 /* Print styles for PDF download */
 @media print {
-  .header, .footer, .scroll-to-top, .hero-buttons {
+  .header, .scroll-to-top, .hero-buttons {
+    display: none;
+  }
+  
+  /* Allow footer to be visible in desktop view but hidden for print */
+  .footer {
     display: none;
   }
   
