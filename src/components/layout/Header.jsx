@@ -12,9 +12,10 @@
  * when the user scrolls down (becomes more compact with a different background).
  */
 import React, { useState, useEffect } from 'react';
+import { FaFilePdf, FaEnvelope } from 'react-icons/fa';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ resumePDF = '/yan_braslavsky_cv.pdf' }) => {
   // State to track whether the page has been scrolled
   // Used to apply special styling when header is not at the top
   const [scrolled, setScrolled] = useState(false);
@@ -121,6 +122,13 @@ const Header = () => {
           <a href="#education" className="nav-link" tabIndex="0" aria-label="Education section" onClick={closeMobileMenu}>Education</a>
           <a href="#testimonials" className="nav-link" tabIndex="0" aria-label="Testimonials section" onClick={closeMobileMenu}>Testimonials</a>
         </nav>
+
+        {/* Action buttons (moved from Hero) */}
+        <div className="header-actions">
+          <a href={resumePDF} className="header-btn header-btn-primary" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>
+            <FaFilePdf /> Download Resume
+          </a>
+        </div>
 
         {/* 
           Mobile menu toggle button (hamburger)

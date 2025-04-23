@@ -27,7 +27,7 @@ function App() {
       <ParticlesBackground />
 
       {/* Header */}
-      <Header />
+      <Header resumePDF={resumePDF} />
       
       {/* Sticky Social Icons */}
       <SocialIcons vertical={true} />
