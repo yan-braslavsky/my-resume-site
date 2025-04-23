@@ -120,7 +120,6 @@ const Header = () => {
           <a href="#key-projects" className="nav-link" tabIndex="0" aria-label="Key Projects section" onClick={closeMobileMenu}>Projects</a>
           <a href="#education" className="nav-link" tabIndex="0" aria-label="Education section" onClick={closeMobileMenu}>Education</a>
           <a href="#testimonials" className="nav-link" tabIndex="0" aria-label="Testimonials section" onClick={closeMobileMenu}>Testimonials</a>
-          <a href="#contact" className="nav-link" tabIndex="0" aria-label="Contact section" onClick={closeMobileMenu}>Contact</a>
         </nav>
 
         {/* 

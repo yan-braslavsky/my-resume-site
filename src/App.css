@@ -406,44 +406,6 @@ body, html, #root {
   color: var(--text);
 }
 
-.publications-container {
-  margin-top: 1rem;
-}
-
-.publication-item {
-  background: var(--card);
-  border-radius: 16px;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: 1rem;
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-}
-
-.publication-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(79, 109, 245, 0.2);
-}
-
-.publication-title {
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-}
-
-.publication-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--accent);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  padding: 8px 0;
-}
-
-.publication-link:hover {
-  text-decoration: underline;
-}
-
 .contact-container {
   display: flex;
   flex-direction: column;
@@ -576,7 +538,6 @@ body, html, #root {
   /* Adjust card spacing */
   .skill-card,
   .education-item,
-  .publication-item,
   .project-card {
     padding: 1.5rem;
   }
