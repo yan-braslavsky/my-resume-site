@@ -47,7 +47,7 @@ export const LANGUAGES: Language[] = [
   { name: 'English', icon: '🇬🇧', level: 100 },
   { name: 'German', icon: '🇩🇪', level: 70 },
   { name: 'Hebrew', icon: '🇮🇱', level: 90 },
-  { name: 'Russian', icon: '🇷🇺', level: 80 },
+  { name: 'Russian', icon: '🇷🇺', level: 100 },
 ];
 
 // Skills data
