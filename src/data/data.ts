@@ -47,7 +47,7 @@ export const LANGUAGES: Language[] = [
   { name: 'English', icon: '🇬🇧', level: 100 },
   { name: 'German', icon: '🇩🇪', level: 70 },
   { name: 'Hebrew', icon: '🇮🇱', level: 90 },
-  { name: 'Russian', icon: '🇷🇺', level: 80 },
+  { name: 'Russian', icon: '🇷🇺', level: 100 },
 ];
 
 // Skills data
@@ -60,46 +60,68 @@ export interface Skill {
 export const SKILLS: Skill[] = [
   {
     category: "Leadership & Management",
-    iconName: "FaUsers", // Icon name as string
+    iconName: "FaUserTie", // Professional leadership icon
     skills: [
       "Team Leadership & Growth",
       "Tech Strategy & Vision",
-      "Budget Management",
-      "OKRs & Roadmap Planning",
-      "Cross-functional Collaboration"
+      "Cross-functional Collaboration",
+      "Mentorship & Coaching",
+      "Hiring & Team Structuring"
     ]
   },
   {
     category: "Software Engineering",
-    iconName: "FaCode", // Icon name as string
+    iconName: "FaLaptopCode", // Modern code/development icon
     skills: [
       "Microservice Architecture",
+      "Mobile & Web Development",
       "Cloud Infrastructure (AWS/GCP)",
-      "Mobile Development",
-      "Front-end Technologies",
+      "Front-end Frameworks (React/Next.js)",
       "CI/CD & DevOps"
     ]
   },
   {
-    category: "Product Development",
-    iconName: "FaRegLightbulb", // Icon name as string
+    category: "Product & UX",
+    iconName: "FaPencilRuler", // Design and product icon
     skills: [
-      "Agile Methodologies",
-      "Product Strategy",
-      "UX/UI Best Practices",
-      "Performance Optimization",
-      "Technical Debt Management"
+      "Agile Product Development",
+      "Product Strategy & Roadmaps",
+      "UX/UI Design Principles",
+      "A/B Testing & User Feedback Loops",
+      "Accessibility Best Practices"
     ]
   },
   {
-    category: "Business Acumen",
-    iconName: "FaBusinessTime", // Icon name as string
+    category: "Business & Operations",
+    iconName: "FaChartLine", // Business growth icon
     skills: [
       "E-Commerce Expertise",
-      "Stakeholder Management",
-      "Cost-benefit Analysis",
-      "Resource Allocation",
+      "Stakeholder Communication",
+      "Resource Allocation & Cost Management",
+      "Budgeting & Forecasting",
       "Process Optimization"
+    ]
+  },
+  {
+    category: "AI & Data",
+    iconName: "FaBrain", // AI/Machine learning icon
+    skills: [
+      "Machine Learning Basics",
+      "Data-driven Decision Making",
+      "AIOps & Observability",
+      "Monitoring & Alerting Systems",
+      "Experimentation at Scale"
+    ]
+  },
+  {
+    category: "Innovation & Growth",
+    iconName: "FaRocket", // Growth/innovation icon
+    skills: [
+      "Scaling Startups",
+      "Strategic Partnerships",
+      "GTM (Go-to-Market) Planning",
+      "Innovation Culture & Enablement",
+      "Personal Branding & Thought Leadership"
     ]
   }
 ];
@@ -114,22 +136,34 @@ export interface Experience {
 
 export const EXPERIENCE: Experience[] = [
   {
-    company: "Home24",
-    position: "Director of Engineering",
-    date: "2017 - Present",
-    description: "Leading engineering teams across multiple product lines, managing budget and resources, implementing technical strategy, and working with key stakeholders to deliver scalable e-commerce solutions."
+    company: "AWS (Amazon Web Services)",
+    position: "System Delivery Manager",
+    date: "2024 - Present",
+    description: "Leading operations of AWS's machine learning services across Europe (Bedrock, SageMaker, Amazon Q), with a focus on team growth, technical readiness, and scaling operations. Built and led a 12-person team driving operational excellence. Orchestrated technical roadmaps and stakeholder engagement under aggressive timelines. Oversaw hiring, promotion, talent development, and people management. Streamlined processes to support rapid ML service integration."
   },
   {
-    company: "Previous Role",
-    position: "Senior Engineering Manager",
-    date: "2014 - 2017",
-    description: "Led the development of multiple mobile applications, implemented CI/CD pipelines, and improved development process efficiency resulting in 40% faster time-to-market."
+    company: "SoundCloud",
+    position: "Engineering Manager",
+    date: "2021 - 2024",
+    description: "Directed multiple teams responsible for infrastructure and client-facing systems. Delivered cross-team initiatives involving 30+ engineers, enhancing UI systems. Led Android platform with 24 engineers; mentored and promoted top talent. Integrated AI features and shaped engineering processes company-wide. Supported strategic alignment of OKRs and stakeholder collaboration."
+  },
+  {
+    company: "Klarna",
+    position: "Engineering Manager",
+    date: "2020 - 2021",
+    description: "Founded and led 4 teams within Klarna's application domain. Defined engineering KPIs, workflows, and ceremonies adopted at scale. Mentored engineers, drove promotions, and structured career progression. Aligned technical strategy with product goals and stakeholder priorities."
+  },
+  {
+    company: "Quandoo",
+    position: "Engineering Manager",
+    date: "2018 - 2020",
+    description: "Managed 3 cross-functional teams building mobile B2B products. Led architecture migration from monolith to microservices (KAPPA). Advocated Flutter and GraphQL adoption for platform consistency. Defined performance KPIs and built a company-wide competency matrix. Scaled team size by 40% through structured hiring improvements."
   },
   {
     company: "Early Career",
-    position: "Software Engineer",
-    date: "2010 - 2014",
-    description: "Developed full-stack solutions for enterprise clients, focusing on web applications and early mobile development projects."
+    position: "Mobile & Full-Stack Development",
+    date: "2011 - 2018",
+    description: "Hands-on engineering roles across startups and scale-ups including Home24, GameDuell, Sync.Me, Zemingo, and NeoVSP. Led mobile engineering at Home24, representing the company at summits and blog posts. Delivered high-quality Android and cross-platform apps using modern frameworks. Migrated legacy stacks and reduced technical debt through architecture ownership. Introduced CI/CD, mentored juniors, and drove technical decision-making."
   }
 ];
 

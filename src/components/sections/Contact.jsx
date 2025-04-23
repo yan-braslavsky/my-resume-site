@@ -22,7 +22,7 @@ const Contact = () => {
           <FaGithub />
         </motion.a>
         <motion.a
-          href="https://linkedin.com/in/yanbraslavsky"
+          href="https://www.linkedin.com/in/yan-braslavsky-aa071840/"
           target="_blank"
           rel="noopener noreferrer"
           className="social-link"

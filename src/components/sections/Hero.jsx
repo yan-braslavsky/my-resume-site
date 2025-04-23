@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFilePdf, FaEnvelope } from 'react-icons/fa';
+import { FaFilePdf, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
-const Hero = ({ resumePDF }) => {
+const Hero = ({ resumePDF = '/yan_braslavsky_cv.pdf' }) => {
   return (
     <section className="hero-section" id="about" aria-label="About me">
       <div className="hero-background"></div>
@@ -24,13 +24,43 @@ const Hero = ({ resumePDF }) => {
           Building high-impact teams and scalable platforms with over 15 years of experience in tech.
           Calm in chaos, focused under pressure, and always leading with a human-first approach.
         </p>
-        <div className="hero-buttons">
-          <a href={resumePDF} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        
+        {/* Mobile-only actions: Resume button and social icons */}
+        <div className="hero-mobile-actions">
+          <a href={resumePDF} className="mobile-resume-btn" target="_blank" rel="noopener noreferrer">
             <FaFilePdf /> Download Resume
           </a>
-          <a href="#contact" className="btn btn-secondary">
-            <FaEnvelope /> Get in Touch
-          </a>
+          
+          <div className="mobile-social-icons">
+            <motion.a
+              href="https://github.com/yan-braslavsky"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-social-icon"
+              whileHover={{ scale: 1.1 }}
+              aria-label="GitHub Profile"
+            >
+              <FaGithub />
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/yan-braslavsky-aa071840/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-social-icon"
+              whileHover={{ scale: 1.1 }}
+              aria-label="LinkedIn Profile"
+            >
+              <FaLinkedin />
+            </motion.a>
+            <motion.a
+              href="mailto:yan.braslavsky@gmail.com"
+              className="mobile-social-icon"
+              whileHover={{ scale: 1.1 }}
+              aria-label="Email Contact"
+            >
+              <FaEnvelope />
+            </motion.a>
+          </div>
         </div>
       </motion.div>
     </section>

@@ -10,10 +10,10 @@ import Experience from './components/sections/Experience';
 import Languages from './components/sections/Languages';
 import Education from './components/sections/Education';
 import KeyProjects from './components/sections/KeyProjects';
-import Publications from './components/sections/Publications';
 import Personal from './components/sections/Personal';
-import Contact from './components/sections/Contact';
+import Testimonials from './components/sections/Testimonials';
 import ScrollToTopButton from './components/ui/ScrollToTopButton';
+import SocialIcons from './components/ui/SocialIcons';
 import { resumePDF } from './data/data';
 import './App.css';
 
@@ -27,7 +27,10 @@ function App() {
       <ParticlesBackground />
 
       {/* Header */}
-      <Header />
+      <Header resumePDF={resumePDF} />
+      
+      {/* Sticky Social Icons */}
+      <SocialIcons vertical={true} />
 
       {/* Scroll to top button */}
       <ScrollToTopButton />
@@ -50,14 +53,11 @@ function App() {
       {/* Key Projects Section */}
       <KeyProjects />
 
-      {/* Publications Section */}
-      <Publications />
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Personal Section */}
       <Personal />
-
-      {/* Contact Section */}
-      <Contact />
 
       {/* Footer */}
       <Footer />
