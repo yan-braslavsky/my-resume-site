@@ -14,25 +14,46 @@ export interface KeyProject {
 
 export const KEY_PROJECTS: KeyProject[] = [
   {
-    title: "E-commerce Platform Modernization",
-    description: "Led the architectural redesign and implementation of a microservices-based platform that improved site reliability by 45% and reduced deployment time by 70%.",
-    tech: ["Microservices", "Kubernetes", "React", "Node.js", "PostgreSQL"],
-    iconName: "FaShoppingCart", // Icon name as string
-    impact: "Supported 200% growth in transaction volume with 30% fewer infrastructure resources."
+    title: "AI & ML Ops Enablement at Scale",
+    description: "Led the operational enablement and scalability of AWS machine learning services across Europe (Bedrock, SageMaker, Amazon Q), ensuring technical readiness and seamless service integration. Scaled a 12-person team while driving automation and skill development. Executed technical roadmaps aligned with aggressive go-to-market timelines. Delivered service reliability improvements and readiness for enterprise adoption.",
+    tech: ["AWS", "SageMaker", "Amazon Q", "Ops Excellence", "Tech Roadmaps"],
+    iconName: "FaRobot", // AI/ML related icon
+    impact: "Improved operational readiness across 3 major ML services, driving 40% efficiency gains in service onboarding."
   },
   {
-    title: "Mobile App Development Framework",
-    description: "Created a cross-platform development framework that enabled simultaneous iOS and Android releases, reducing time-to-market by 40% and development costs by 35%.",
-    tech: ["React Native", "TypeScript", "GraphQL", "CI/CD", "Jest"],
-    iconName: "FaMobileAlt", // Icon name as string
-    impact: "Adopted by 5 internal product teams resulting in consistent user experience across all mobile products."
+    title: "Cross-Platform UI Libraries Overhaul",
+    description: "Coordinated a cross-team initiative with 30+ engineers to standardize UI components at SoundCloud, leading to faster delivery and consistency across platforms. Improved lead time by 18% across client-facing applications. Established DORA metrics to measure and improve team performance. Unified component strategy, reducing UI-related bugs by 30%.",
+    tech: ["React", "Design Systems", "CI/CD", "DORA Metrics"],
+    iconName: "FaPalette", // UI/Design related icon
+    impact: "Enabled a scalable and maintainable UI architecture across mobile and web apps."
   },
   {
-    title: "Cloud Infrastructure Migration",
-    description: "Planned and executed migration of legacy systems to cloud infrastructure, designing a scalable and resilient architecture with proper security controls.",
-    tech: ["AWS", "Terraform", "Docker", "Prometheus", "Grafana"],
-    iconName: "FaServer", // Icon name as string
-    impact: "Reduced operational costs by 50% while significantly improving system observability and uptime."
+    title: "Mobile Platform Revamp & B2B App Rollout",
+    description: "Spearheaded the mobile transformation at Quandoo by replacing a legacy hardware-based B2B solution with a scalable, app-based platform—driving product growth and enhancing customer onboarding. Migrated from proprietary hardware to mobile-first app architecture, reducing deployment costs and support overhead. Led full rewrite of the business application with modern tooling and architecture. Introduced cross-platform development frameworks and CI/CD, improving release velocity and user experience. Onboarded 30% more clients within the first quarter post-launch.",
+    tech: ["Flutter", "GraphQL", "CI/CD", "Mobile Architecture", "React Native"],
+    iconName: "FaMobileAlt", // Mobile-related icon
+    impact: "Enabled global scalability and reduced onboarding friction by modernizing the B2B customer experience."
+  },
+  {
+    title: "Domain Formation & Delivery Strategy",
+    description: "Built and structured 4 new product teams from scratch within Klarna's mobile domain, delivering a clear mission, tech strategy, and execution model for each. Defined team KPIs, rituals, and cross-team standards (testing, monitoring, alerting). Delivered multiple features aligned with domain goals and budget allocation. Advocated for and implemented a scalable hiring and mentoring model. Influenced company-wide engineering evaluation practices.",
+    tech: ["Team Design", "OKRs", "Cross-Team Standards", "Hiring & Mentoring"],
+    iconName: "FaUsers", // Team structure icon
+    impact: "Established a scalable domain with sustainable delivery, adopted across Klarna."
+  },
+  {
+    title: "Mobile Department Leadership",
+    description: "Took over and scaled the mobile department at Home24, shaping technical direction and visibility of mobile efforts both internally and publicly. Reduced technical debt and modernized the mobile stack. Represented mobile engineering at summits and events, elevating brand and attracting talent. Drove mobile CI/CD implementation and continuous delivery culture. Mentored junior engineers into senior roles and improved team retention.",
+    tech: ["Android", "Kotlin", "CI/CD", "Tech Evangelism", "Architecture Decisions"],
+    iconName: "FaCodeBranch", // Code management/direction icon
+    impact: "Transformed the mobile team into a respected, high-performing unit within the company."
+  },
+  {
+    title: "Custom Game Engine & Cross-Platform Development",
+    description: "Developed a custom game engine for real-time multiplayer games at GameDuell, enabling smooth cross-platform experiences and fast iteration for new titles. Implemented reusable core systems for game physics, rendering, and networking. Reduced time-to-market for new games through modular engine design. Integrated with analytics and A/B testing to optimize player engagement. Supported both iOS and Android using shared codebase strategies.",
+    tech: ["C++", "Game Development", "Cross-Platform Engines", "Mobile Performance"],
+    iconName: "FaGamepad", // Gaming-related icon
+    impact: "Powered GameDuell's ability to rapidly launch multiplayer games with consistent quality."
   }
 ];
 
