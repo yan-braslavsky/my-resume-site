@@ -223,7 +223,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     text: "Yan is a dedicated and skilled leader whose technical expertise and empathy provide a strong foundation for any team. He strikes an excellent balance between delivering features and ensuring the product remains maintainable. Yan supports his team by shielding them when necessary while encouraging their growth and development. I highly recommend Yan and believe he is destined for great achievements.", 
     author: "Danny Preussler",
-    role: "Engineer at SoundCloud, Google Developer Expert Android",
+    role: "Google Developer Expert Android",
     avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHKpVrMeynt2g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728388190247?e=1750896000&v=beta&t=LcOnx4E6gTg0_-uVQn0FFEODVky2KSqkyGBB8q06HQE"
   },
   {
