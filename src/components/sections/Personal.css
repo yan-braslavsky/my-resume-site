@@ -1,9 +1,112 @@
 /* Personal/Hobbies section styles */
+.personal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.personal-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.personal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+.personal-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.personal-card-icon {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.personal-card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+.personal-card-text {
+  color: var(--text-secondary, #94a3b8);
+  line-height: 1.7;
+}
+
+.personal-link {
+  color: var(--accent-color, #4f6df5);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px dashed var(--accent-color, #4f6df5);
+  padding-bottom: 2px;
+}
+
+.personal-link:hover {
+  color: var(--accent-color-hover, #60a5fa);
+  border-bottom: 1px solid var(--accent-color-hover, #60a5fa);
+}
+
+.personal-milestones {
+  list-style-type: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.personal-milestones li {
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.personal-milestones li:before {
+  content: "→";
+  color: var(--accent-color);
+  margin-right: 0.75rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.personal-milestones li:last-child {
+  border-bottom: none;
+}
+
+.personal-philosophy {
+  font-style: italic;
+  color: var(--text-secondary, #94a3b8);
+  margin-top: 1rem;
+  line-height: 1.7;
+}
+
+.hobbies-section {
+  margin-top: 2rem;
+}
+
+.hobbies-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+  margin-bottom: 1.5rem;
+}
+
 .hobbies-container {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .hobby-item {
@@ -25,6 +128,16 @@
 }
 
 @media (max-width: 768px) {
+  .personal-card {
+    padding: 1.5rem;
+  }
+  
+  .personal-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
   .hobbies-container {
     justify-content: center;
   }
