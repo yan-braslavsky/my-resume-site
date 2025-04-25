@@ -221,15 +221,15 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    text: "Yan is an experienced and passionate leader. His technical expertise and empathy provided a solid foundation for our team. He strikes the right balance between delivering features and maintaining long-term code quality. He helps teams grow while shielding them when needed.",
+    text: "Yan is a dedicated and skilled leader whose technical expertise and empathy provide a strong foundation for any team. He strikes an excellent balance between delivering features and ensuring the product remains maintainable. Yan supports his team by shielding them when necessary while encouraging their growth and development. I highly recommend Yan and believe he is destined for great achievements.", 
     author: "Danny Preussler",
     role: "Engineer at SoundCloud, Google Developer Expert Android",
     avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHKpVrMeynt2g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728388190247?e=1750896000&v=beta&t=LcOnx4E6gTg0_-uVQn0FFEODVky2KSqkyGBB8q06HQE"
   },
   {
-    text: "Yan is goal-driven and deeply collaborative. He ensures every team member feels engaged and aligned with the mission. His communication style is clear and inclusive, which made working under his leadership both productive and enjoyable.",
+    text: "Working with Yan for nearly two years was a rewarding experience, during which I gained valuable insights and built a lasting friendship. Yan is highly goal-driven, always ensuring team members are engaged and aligned with project objectives. His ability to communicate ideas clearly and keep everyone on the same page is a vital asset in leadership. Thank you, Yan, for your dedication and camaraderie. I look forward to collaborating again in the future. Keep up the great work!",
     author: "Antônio Carlos",
-    role: "Software Engineer",
+    role: "Senior iOS Engineer at Quandoo",
     avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGnWsRpLray8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588426308719?e=1750896000&v=beta&t=oVKLlaCa7Aqyr4ru2j1N_tJBU9TiXee-0S5nqf9nh1c"
   },
   {
