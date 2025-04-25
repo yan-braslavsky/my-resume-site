@@ -127,6 +127,80 @@
   color: var(--accent-color);
 }
 
+/* Activities Grid Styles */
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: var(--accent-gradient, linear-gradient(90deg, #4f6df5 0%, #06b6d4 100%));
+  transition: height 0.4s ease;
+}
+
+.activity-card:hover::before {
+  height: 100%;
+}
+
+.activity-icon-container {
+  background: rgba(79, 109, 245, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover .activity-icon-container {
+  transform: scale(1.1);
+  background: rgba(79, 109, 245, 0.2);
+}
+
+.activity-icon {
+  color: var(--accent-color, #4f6df5);
+  font-size: 1.5rem;
+}
+
+.activity-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--text-color-light, #ffffff);
+  transition: all 0.3s ease;
+}
+
+.activity-description {
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 768px) {
   .personal-card {
     padding: 1.5rem;
@@ -140,5 +214,13 @@
   
   .hobbies-container {
     justify-content: center;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .activity-card {
+    padding: 1.25rem;
   }
 }
