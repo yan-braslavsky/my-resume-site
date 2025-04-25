@@ -216,17 +216,20 @@ export interface Testimonial {
   text: string;
   author: string;
   role: string;
+  avatar: string; // Added avatar URL field
 }
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     text: "Yan's ability to lead teams through complex technical challenges while maintaining focus on product goals is exceptional. His strategic vision transformed our engineering approach.",
     author: "Jane Doe",
-    role: "VP of Product, Home24"
+    role: "VP of Product, Home24",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGnWsRpLray8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588426308719?e=1750896000&v=beta&t=oVKLlaCa7Aqyr4ru2j1N_tJBU9TiXee-0S5nqf9nh1c"
   },
   {
     text: "Working with Yan has been transformative for our organization. His technical leadership combined with his people-first approach created a high-performing, motivated team.",
     author: "John Smith",
-    role: "CTO, Previous Company"
+    role: "CTO, Previous Company",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGnWsRpLray8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588426308719?e=1750896000&v=beta&t=oVKLlaCa7Aqyr4ru2j1N_tJBU9TiXee-0S5nqf9nh1c"
   }
 ];

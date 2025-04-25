@@ -22,6 +22,13 @@ const Testimonials = () => {
             transition={{ duration: 0.5, delay: idx * 0.2 }}
             viewport={{ once: true }}
           >
+            <div className="testimonial-avatar">
+              <img 
+                src={testimonial.avatar} 
+                alt={`${testimonial.author}`} 
+                className="avatar-image"
+              />
+            </div>
             <div className="testimonial-quote">
               <FaQuoteRight />
             </div>
