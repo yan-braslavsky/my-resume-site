@@ -12,7 +12,6 @@ import {
   FaChartLine, 
   FaHandsHelping, 
   FaBrain, 
-  FaLightbulb, 
   FaChalkboardTeacher 
 } from 'react-icons/fa';
 import * as FaIcons from 'react-icons/fa';
@@ -129,7 +128,7 @@ const Personal = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            Activities I Enjoy
+            What I'm Into
           </motion.h3>
           
           <div className="activities-grid">
@@ -144,9 +143,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaHandRock className="activity-icon" />
               </div>
-              <h4 className="activity-title">Calisthenics & Advanced Bodyweight Training</h4>
+              <h4 className="activity-title">Calisthenics & Bodyweight Mastery</h4>
               <p className="activity-description">
-                You thrive in pushing physical limits with handstands, muscle-ups, planche progressions, and gymnastic ring work.
+                I train daily with a focus on advanced bodyweight movements—handstands, muscle-ups, planche work, and gymnastic rings keep me grounded, challenged, and growing.
               </p>
             </motion.div>
 
@@ -161,9 +160,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaCode className="activity-icon" />
               </div>
-              <h4 className="activity-title">Building Purpose-Driven Software Projects</h4>
+              <h4 className="activity-title">Building Software That Matters</h4>
               <p className="activity-description">
-                Whether it's automating Telegram workouts or building event platforms—tech becomes meaningful for you when it serves a real-world cause.
+                I love building tech that solves real problems. Whether it's a passion project like Barliner Workout or a productivity tool, I enjoy bringing ideas to life with clean, purposeful code.
               </p>
             </motion.div>
 
@@ -178,9 +177,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaApple className="activity-icon" />
               </div>
-              <h4 className="activity-title">Biohacking & Nutritional Optimization</h4>
+              <h4 className="activity-title">Optimizing My Body & Nutrition</h4>
               <p className="activity-description">
-                Your diet is intentional. You experiment with protein timing, macro balancing, and monitor how food affects energy and recovery.
+                I'm constantly iterating my diet, macros, and recovery to align with my training goals. Health, performance, and longevity are a big part of how I live.
               </p>
             </motion.div>
 
@@ -195,9 +194,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaUsers className="activity-icon" />
               </div>
-              <h4 className="activity-title">Leadership with Emotional Intelligence</h4>
+              <h4 className="activity-title">Leading With Empathy</h4>
               <p className="activity-description">
-                You don't just manage—you lead with empathy, reflection, and constant iteration. Your leadership philosophy is as strong as your code.
+                My leadership approach is human-first. I care deeply about the people I work with, and I believe in clarity, presence, and emotional intelligence as pillars of great management.
               </p>
             </motion.div>
 
@@ -212,9 +211,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaBookOpen className="activity-icon" />
               </div>
-              <h4 className="activity-title">Learning Through Deep Reading</h4>
+              <h4 className="activity-title">Reading to Evolve</h4>
               <p className="activity-description">
-                You seek timeless knowledge in books like The 48 Laws of Power, not to manipulate—but to understand, grow, and lead wisely.
+                I'm a big fan of timeless reads—especially those exploring human nature and power dynamics. Robert Greene's work has deeply influenced how I think and lead.
               </p>
             </motion.div>
 
@@ -229,9 +228,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaChartLine className="activity-icon" />
               </div>
-              <h4 className="activity-title">Financial Engineering & Strategic Wealth Building</h4>
+              <h4 className="activity-title">Building Long-Term Wealth Strategically</h4>
               <p className="activity-description">
-                You're not just investing—you're building a freedom plan with ETFs, real estate, and data-backed strategies.
+                I'm passionate about financial freedom. I track my cash flow, invest regularly in ETFs, own real estate, and enjoy planning for the long game.
               </p>
             </motion.div>
 
@@ -246,9 +245,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaHandsHelping className="activity-icon" />
               </div>
-              <h4 className="activity-title">Volunteering Skills for Communities</h4>
+              <h4 className="activity-title">Giving Back With My Skills</h4>
               <p className="activity-description">
-                Whether it's <a href="https://barliner-workout.de/" target="_blank" rel="noopener noreferrer" className="personal-link">Barliner</a> or future fitness communities, you enjoy giving back through code, leadership, and vision.
+                Volunteering is my way of saying thanks to the communities that inspire me. When I believe in something—like calisthenics—I want to contribute with what I do best: building.
               </p>
             </motion.div>
 
@@ -263,9 +262,9 @@ const Personal = () => {
               <div className="activity-icon-container">
                 <FaBrain className="activity-icon" />
               </div>
-              <h4 className="activity-title">Self-Reflection & Personal Growth Routines</h4>
+              <h4 className="activity-title">Reflecting & Growing</h4>
               <p className="activity-description">
-                From battling insomnia to overcoming mental noise, you've built a lifestyle around growth—physically, mentally, and emotionally.
+                I'm constantly working on myself—mentally, emotionally, and physically. Whether it's navigating insomnia, dealing with ambiguity, or finding balance, I treat life as one long iteration loop.
               </p>
             </motion.div>
 
@@ -278,28 +277,11 @@ const Personal = () => {
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
               <div className="activity-icon-container">
-                <FaLightbulb className="activity-icon" />
-              </div>
-              <h4 className="activity-title">Innovating in Fitness-Tech Concepts</h4>
-              <p className="activity-description">
-                Your vision for interactive studios like Beat81 + boxing tech shows how your brain connects training, tech, and community.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.55 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            >
-              <div className="activity-icon-container">
                 <FaChalkboardTeacher className="activity-icon" />
               </div>
-              <h4 className="activity-title">Mentoring & Interview Coaching</h4>
+              <h4 className="activity-title">Mentoring & Coaching</h4>
               <p className="activity-description">
-                With a goal to build a tech mentoring community, your drive to uplift others matches your hunger for mastery.
+                I've benefited from strong mentorship, and now I want to give back. Whether it's career advice, interview prep, or leadership growth, I enjoy supporting others on their path.
               </p>
             </motion.div>
           </div>
