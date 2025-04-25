@@ -221,15 +221,39 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    text: "Yan's ability to lead teams through complex technical challenges while maintaining focus on product goals is exceptional. His strategic vision transformed our engineering approach.",
-    author: "Jane Doe",
-    role: "VP of Product, Home24",
+    text: "Yan is an experienced and passionate leader. His technical expertise and empathy provided a solid foundation for our team. He strikes the right balance between delivering features and maintaining long-term code quality. He helps teams grow while shielding them when needed.",
+    author: "Danny Preussler",
+    role: "Engineer at SoundCloud, Google Developer Expert Android",
+    avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHKpVrMeynt2g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728388190247?e=1750896000&v=beta&t=LcOnx4E6gTg0_-uVQn0FFEODVky2KSqkyGBB8q06HQE"
+  },
+  {
+    text: "Yan is goal-driven and deeply collaborative. He ensures every team member feels engaged and aligned with the mission. His communication style is clear and inclusive, which made working under his leadership both productive and enjoyable.",
+    author: "Antônio Carlos",
+    role: "Software Engineer",
     avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGnWsRpLray8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588426308719?e=1750896000&v=beta&t=oVKLlaCa7Aqyr4ru2j1N_tJBU9TiXee-0S5nqf9nh1c"
   },
   {
-    text: "Working with Yan has been transformative for our organization. His technical leadership combined with his people-first approach created a high-performing, motivated team.",
-    author: "John Smith",
-    role: "CTO, Previous Company",
-    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGnWsRpLray8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1588426308719?e=1750896000&v=beta&t=oVKLlaCa7Aqyr4ru2j1N_tJBU9TiXee-0S5nqf9nh1c"
+    text: "I've seen Yan lead with confidence and competence. He consistently resolved conflicts smoothly and ensured a strong team spirit. Our collaboration resulted in top-performing products, including an app that climbed the Apple Store charts. Yan is the kind of leader any team would be lucky to have.",
+    author: "Eugene Belov",
+    role: "Head of Engineering, Zalando SE",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQF1CNvFaNJwjQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517563393375?e=1750896000&v=beta&t=h1IdzymKCCZH3g64hplkYWn3Svs2rEdzWkRglQj5ccA"
+  },
+  {
+    text: "Yan has deep technical knowledge and a natural eye for scalable, clean architecture. He transitioned seamlessly between tech stacks and was always eager to explore new tools and methodologies. A strong work ethic and an eagerness to learn make him an asset in any environment.",
+    author: "Marco Pappalardo",
+    role: "Lead Programmer at GameDuell",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQFWEcC2fE0ZoA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516280926637?e=1750896000&v=beta&t=5r3K7h1LS2_ZFQ6pZsZrroxL8T5X6YvscH1TCcUX-fo"
+  },
+  {
+    text: "Yan was a key developer on our most challenging features and core infrastructure. His perspective, depth of understanding, and positive attitude made him a standout member of our team. Collaborating with him was not only productive but also a pleasure.",
+    author: "Vadim Harnas",
+    role: "CTO & R&D Manager at Sync.ME",
+    avatar: "https://media.licdn.com/dms/image/v2/C5603AQFk2OWHq3d1IQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1528214737905?e=1750896000&v=beta&t=2co3v9nEHXgFRSMlnHEab-gFT6DJKBZ_HjIrV37utN8"
+  },
+  {
+    text: "Yan is a fast learner with a proactive mindset. He picks up new technologies quickly and always delivers on time. Dependable and outcome-oriented, he brings energy and reliability to any team he's on.",
+    author: "Stas Oskin",
+    role: "Co-Founder at Pontem",
+    avatar: "https://media.licdn.com/dms/image/v2/C5603AQFhwHsV6gdFag/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1602686663784?e=1750896000&v=beta&t=RJJddgBTfMEJvzx1uFYe_wdJQL7LRm5Yq0eW-kqTcUo"
   }
 ];
