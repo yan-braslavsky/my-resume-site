@@ -221,6 +221,12 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    text: "I had the opportunity to work with Yan during his time as a Systems Development Manager at AWS, where we were peers. Yan brought a structured approach to building and managing his team, and his leadership experience was evident from the start.He consistently identified areas for improvement and addressed potential risks early, contributing significantly to the team’s operational stability. I appreciated his proactive attitude and focus on continuous improvement.I would be happy to work with Yan again in the future.", 
+    author: "Tamar Inbar Shelach",
+    role: "Systems Development Manager at AWS",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQGCXdiSCX4joQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516272428850?e=1751500800&v=beta&t=iFUBaG7yzC5YVITQKuVyIQBuUboUZVjX6d7Z8usFk2s"
+  },
+  {
     text: "Yan is a dedicated and skilled leader whose technical expertise and empathy provide a strong foundation for any team. He strikes an excellent balance between delivering features and ensuring the product remains maintainable. Yan supports his team by shielding them when necessary while encouraging their growth and development. I highly recommend Yan and believe he is destined for great achievements.", 
     author: "Danny Preussler",
     role: "Google Developer Expert Android",
