@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaFilePdf, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import AnimatedComponent from '../ui/AnimatedComponent';
 import './Hero.css';
 
 const Hero = ({ resumePDF = '/yan_braslavsky_cv.pdf' }) => {
@@ -10,11 +10,15 @@ const Hero = ({ resumePDF = '/yan_braslavsky_cv.pdf' }) => {
       <div className="hero-gradient"></div>
       <div className="grid-background"></div>
 
-      <motion.div
+      <AnimatedComponent
         className="hero-content"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        motionProps={{
+          initial: { opacity: 0, y: 30 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.8 }
+        }}
+        // Always enable animations for the hero section as it's the first thing users see
+        enabled={true}
       >
         <h1 className="hero-title">
           Yan Braslavsky<br />
@@ -32,37 +36,40 @@ const Hero = ({ resumePDF = '/yan_braslavsky_cv.pdf' }) => {
           </a>
           
           <div className="mobile-social-icons">
-            <motion.a
+            <AnimatedComponent
+              as="a"
               href="https://github.com/yan-braslavsky"
               target="_blank"
               rel="noopener noreferrer"
               className="mobile-social-icon"
-              whileHover={{ scale: 1.1 }}
+              motionProps={{ whileHover: { scale: 1.1 } }}
               aria-label="GitHub Profile"
             >
               <FaGithub />
-            </motion.a>
-            <motion.a
+            </AnimatedComponent>
+            <AnimatedComponent
+              as="a"
               href="https://www.linkedin.com/in/yan-braslavsky-aa071840/"
               target="_blank"
               rel="noopener noreferrer"
               className="mobile-social-icon"
-              whileHover={{ scale: 1.1 }}
+              motionProps={{ whileHover: { scale: 1.1 } }}
               aria-label="LinkedIn Profile"
             >
               <FaLinkedin />
-            </motion.a>
-            <motion.a
+            </AnimatedComponent>
+            <AnimatedComponent
+              as="a"
               href="mailto:yan.braslavsky@gmail.com"
               className="mobile-social-icon"
-              whileHover={{ scale: 1.1 }}
+              motionProps={{ whileHover: { scale: 1.1 } }}
               aria-label="Email Contact"
             >
               <FaEnvelope />
-            </motion.a>
+            </AnimatedComponent>
           </div>
         </div>
-      </motion.div>
+      </AnimatedComponent>
     </section>
   );
 };

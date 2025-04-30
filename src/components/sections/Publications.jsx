@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaChevronRight } from 'react-icons/fa';
 import Section from '../ui/Section';
+import AnimatedComponent from '../ui/AnimatedComponent';
 import './Publications.css';
 
 const Publications = () => {
@@ -12,13 +12,15 @@ const Publications = () => {
       subtitle="Sharing insights and expertise with the tech community."
     >
       <div className="publications-container">
-        <motion.div
+        <AnimatedComponent
           className="publication-item"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          whileHover={{ y: -5 }}
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 0.5 },
+            viewport: { once: true },
+            whileHover: { y: -5 }
+          }}
         >
           <h3 className="publication-title">Continuous Delivery of Mobile Applications</h3>
           <a
@@ -29,7 +31,7 @@ const Publications = () => {
           >
             Read article <FaChevronRight />
           </a>
-        </motion.div>
+        </AnimatedComponent>
       </div>
     </Section>
   );

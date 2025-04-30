@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import AnimatedComponent from './AnimatedComponent';
 import { FaArrowUp } from 'react-icons/fa';
 import './ScrollToTopButton.css';
 
@@ -35,20 +35,25 @@ const ScrollToTopButton = ({ threshold = 500 }) => {
   };
 
   return (
-    <motion.button
+    <AnimatedComponent
+      as="button"
       className={`scroll-to-top ${visible ? 'visible' : ''}`}
       onClick={scrollToTop}
       aria-label="Scroll to top"
       tabIndex="0"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ 
-        opacity: visible ? 1 : 0, 
-        scale: visible ? 1 : 0.8 
+      motionProps={{
+        initial: { opacity: 0, scale: 0.8 },
+        animate: { 
+          opacity: visible ? 1 : 0, 
+          scale: visible ? 1 : 0.8 
+        },
+        transition: { duration: 0.3 }
       }}
-      transition={{ duration: 0.3 }}
+      // Always enable animations for this component since it's critical functionality
+      enabled={true}
     >
       <FaArrowUp />
-    </motion.button>
+    </AnimatedComponent>
   );
 };
 

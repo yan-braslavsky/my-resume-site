@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { 
   FaDumbbell, 
   FaBook, 
@@ -17,6 +16,7 @@ import {
 import * as FaIcons from 'react-icons/fa';
 import { HOBBIES } from '../../data/data';
 import Section from '../ui/Section';
+import AnimatedComponent from '../ui/AnimatedComponent';
 import './Personal.css';
 
 // Helper function to resolve icon name strings to corresponding React components
@@ -35,12 +35,14 @@ const Personal = () => {
     >
       <div className="personal-content">
         {/* Sports & Community Section */}
-        <motion.div 
+        <AnimatedComponent 
           className="personal-card"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 0.5 },
+            viewport: { once: true }
+          }}
         >
           <div className="personal-card-header">
             <FaDumbbell className="personal-card-icon" />
@@ -49,15 +51,17 @@ const Personal = () => {
           <p className="personal-card-text">
             Sports and calisthenics are not just hobbies—they're a core part of my lifestyle. I've been fortunate to combine my love for movement with my skills in tech by contributing to the <a href="https://barliner-workout.de/" target="_blank" rel="noopener noreferrer" className="personal-link">Barliner Workout</a> community. This volunteer project allowed me to build meaningful software solutions for a cause I believe in—fostering accessible and structured workout routines for fitness lovers like myself.
           </p>
-        </motion.div>
+        </AnimatedComponent>
 
         {/* Psychology & Reading Section */}
-        <motion.div 
+        <AnimatedComponent 
           className="personal-card"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 0.5, delay: 0.1 },
+            viewport: { once: true }
+          }}
         >
           <div className="personal-card-header">
             <FaBook className="personal-card-icon" />
@@ -66,79 +70,98 @@ const Personal = () => {
           <p className="personal-card-text">
             My bookshelf leans heavily into psychology and personal growth. I'm particularly inspired by the work of Robert Greene. Books like "The 48 Laws of Power" and "The Laws of Human Nature" have shaped how I think about influence, leadership, and the balance between rational strategy and emotional intelligence. I lead with empathy and strive for a "human-first" approach in all my interactions.
           </p>
-        </motion.div>
+        </AnimatedComponent>
 
         {/* Personal Milestones Section */}
-        <motion.div 
+        <AnimatedComponent 
           className="personal-card"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 0.5, delay: 0.2 },
+            viewport: { once: true }
+          }}
         >
           <div className="personal-card-header">
             <FaTrophy className="personal-card-icon" />
             <h3 className="personal-card-title">Personal Milestones</h3>
           </div>
           <ul className="personal-milestones">
-            <motion.li
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              viewport={{ once: true }}
+            <AnimatedComponent
+              as="li"
+              motionProps={{
+                initial: { opacity: 0, x: -10 },
+                whileInView: { opacity: 1, x: 0 },
+                transition: { duration: 0.3, delay: 0.3 },
+                viewport: { once: true }
+              }}
             >
               Self-taught much of my deep technical foundation in software engineering
-            </motion.li>
-            <motion.li
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              viewport={{ once: true }}
+            </AnimatedComponent>
+            <AnimatedComponent
+              as="li"
+              motionProps={{
+                initial: { opacity: 0, x: -10 },
+                whileInView: { opacity: 1, x: 0 },
+                transition: { duration: 0.3, delay: 0.4 },
+                viewport: { once: true }
+              }}
             >
               Moved countries and adapted to new cultures
-            </motion.li>
-            <motion.li
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-              viewport={{ once: true }}
+            </AnimatedComponent>
+            <AnimatedComponent
+              as="li"
+              motionProps={{
+                initial: { opacity: 0, x: -10 },
+                whileInView: { opacity: 1, x: 0 },
+                transition: { duration: 0.3, delay: 0.5 },
+                viewport: { once: true }
+              }}
             >
               Invested in real estate and built long-term financial stability
-            </motion.li>
-            <motion.li
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
-              viewport={{ once: true }}
+            </AnimatedComponent>
+            <AnimatedComponent
+              as="li"
+              motionProps={{
+                initial: { opacity: 0, x: -10 },
+                whileInView: { opacity: 1, x: 0 },
+                transition: { duration: 0.3, delay: 0.6 },
+                viewport: { once: true }
+              }}
             >
               Earned the privilege of working with industry leaders like SoundCloud and AWS
-            </motion.li>
+            </AnimatedComponent>
           </ul>
           <p className="personal-philosophy">
             Each chapter of my life reflects a drive to evolve, push boundaries, and make meaningful contributions inside and outside the workplace.
           </p>
-        </motion.div>
+        </AnimatedComponent>
 
         {/* Enhanced Activities I Enjoy Section */}
         <div className="hobbies-section">
-          <motion.h3 
+          <AnimatedComponent 
+            as="h3"
             className="hobbies-title"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            motionProps={{
+              initial: { opacity: 0 },
+              whileInView: { opacity: 1 },
+              transition: { duration: 0.5 },
+              viewport: { once: true }
+            }}
           >
             What I'm Into
-          </motion.h3>
+          </AnimatedComponent>
           
           <div className="activities-grid">
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.1 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaHandRock className="activity-icon" />
@@ -147,15 +170,17 @@ const Personal = () => {
               <p className="activity-description">
                 I train daily with a focus on advanced bodyweight movements—handstands, muscle-ups, planche work, and gymnastic rings keep me grounded, challenged, and growing.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.15 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaCode className="activity-icon" />
@@ -164,15 +189,17 @@ const Personal = () => {
               <p className="activity-description">
                 I love building tech that solves real problems. Whether it's a passion project like Barliner Workout or a productivity tool, I enjoy bringing ideas to life with clean, purposeful code.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.2 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaApple className="activity-icon" />
@@ -181,15 +208,17 @@ const Personal = () => {
               <p className="activity-description">
                 I'm constantly iterating my diet, macros, and recovery to align with my training goals. Health, performance, and longevity are a big part of how I live.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.25 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaUsers className="activity-icon" />
@@ -198,15 +227,17 @@ const Personal = () => {
               <p className="activity-description">
                 My leadership approach is human-first. I care deeply about the people I work with, and I believe in clarity, presence, and emotional intelligence as pillars of great management.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.3 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaBookOpen className="activity-icon" />
@@ -215,15 +246,17 @@ const Personal = () => {
               <p className="activity-description">
                 I'm a big fan of timeless reads—especially those exploring human nature and power dynamics. Robert Greene's work has deeply influenced how I think and lead.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.35 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaChartLine className="activity-icon" />
@@ -232,15 +265,17 @@ const Personal = () => {
               <p className="activity-description">
                 I'm passionate about financial freedom. I track my cash flow, invest regularly in ETFs, own real estate, and enjoy planning for the long game.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.4 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaHandsHelping className="activity-icon" />
@@ -249,15 +284,17 @@ const Personal = () => {
               <p className="activity-description">
                 Volunteering is my way of saying thanks to the communities that inspire me. When I believe in something—like calisthenics—I want to contribute with what I do best: building.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.45 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaBrain className="activity-icon" />
@@ -266,15 +303,17 @@ const Personal = () => {
               <p className="activity-description">
                 I'm constantly working on myself—mentally, emotionally, and physically. Whether it's navigating insomnia, dealing with ambiguity, or finding balance, I treat life as one long iteration loop.
               </p>
-            </motion.div>
+            </AnimatedComponent>
 
-            <motion.div 
+            <AnimatedComponent 
               className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                transition: { duration: 0.5, delay: 0.5 },
+                viewport: { once: true },
+                whileHover: { y: -8, transition: { duration: 0.2 } }
+              }}
             >
               <div className="activity-icon-container">
                 <FaChalkboardTeacher className="activity-icon" />
@@ -283,7 +322,7 @@ const Personal = () => {
               <p className="activity-description">
                 I've benefited from strong mentorship, and now I want to give back. Whether it's career advice, interview prep, or leadership growth, I enjoy supporting others on their path.
               </p>
-            </motion.div>
+            </AnimatedComponent>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { LANGUAGES } from '../../data/data';
 import Section from '../ui/Section';
+import AnimatedComponent from '../ui/AnimatedComponent';
 import './Languages.css';
 
 const Languages = () => {
@@ -13,26 +13,32 @@ const Languages = () => {
     >
       <div className="languages-container">
         {LANGUAGES.map((lang, idx) => (
-          <motion.div
+          <AnimatedComponent
             key={lang.name}
             className="language-item"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            viewport={{ once: true }}
+            motionProps={{
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              transition: { duration: 0.5, delay: idx * 0.1 },
+              viewport: { once: true }
+            }}
           >
             <div className="language-icon">{lang.icon}</div>
             <div className="language-name">{lang.name}</div>
             <div className="progress-bar">
-              <motion.div
+              <AnimatedComponent
                 className="progress-fill"
-                initial={{ width: 0 }}
-                whileInView={{ width: `${lang.level}%` }}
-                transition={{ duration: 1, delay: 0.3 }}
-                viewport={{ once: true }}
-              ></motion.div>
+                enabled={true}
+                motionProps={{
+                  
+                  initial: { width: 0 },
+                  whileInView: { width: `${lang.level}%` },
+                  transition: { duration: 1, delay: 0.3 },
+                  viewport: { once: true }
+                }}
+              ></AnimatedComponent>
             </div>
-          </motion.div>
+          </AnimatedComponent>
         ))}
       </div>
     </Section>

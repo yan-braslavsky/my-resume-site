@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import AnimatedComponent from './AnimatedComponent';
 import './Section.css';
 
 /**
@@ -16,16 +16,18 @@ const Section = ({
   return (
     <section className={`section ${className}`} id={id}>
       <div className="content-container">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+        <AnimatedComponent
+          motionProps={{
+            initial: { opacity: 0 },
+            whileInView: { opacity: 1 },
+            transition: { duration: 0.6 },
+            viewport: { once: true }
+          }}
         >
           {title && <h2 className="section-title">{title}</h2>}
           {subtitle && <p className="section-subtitle">{subtitle}</p>}
           {children}
-        </motion.div>
+        </AnimatedComponent>
       </div>
     </section>
   );

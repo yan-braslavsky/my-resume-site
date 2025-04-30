@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Section from '../ui/Section';
+import AnimatedComponent from '../ui/AnimatedComponent';
 import './Contact.css';
 
 const Contact = () => {
@@ -12,31 +12,34 @@ const Contact = () => {
       subtitle="Interested in connecting? Reach out through any of these channels."
     >
       <div className="social-links">
-        <motion.a
+        <AnimatedComponent
+          as="a"
           href="https://github.com/yan-braslavsky"
           target="_blank"
           rel="noopener noreferrer"
           className="social-link"
-          whileHover={{ y: -5 }}
+          motionProps={{ whileHover: { y: -5 } }}
         >
           <FaGithub />
-        </motion.a>
-        <motion.a
+        </AnimatedComponent>
+        <AnimatedComponent
+          as="a"
           href="https://www.linkedin.com/in/yan-braslavsky-aa071840/"
           target="_blank"
           rel="noopener noreferrer"
           className="social-link"
-          whileHover={{ y: -5 }}
+          motionProps={{ whileHover: { y: -5 } }}
         >
           <FaLinkedin />
-        </motion.a>
-        <motion.a
+        </AnimatedComponent>
+        <AnimatedComponent
+          as="a"
           href="mailto:yan.braslavsky@gmail.com"
           className="social-link"
-          whileHover={{ y: -5 }}
+          motionProps={{ whileHover: { y: -5 } }}
         >
           <FaEnvelope />
-        </motion.a>
+        </AnimatedComponent>
       </div>
     </Section>
   );
